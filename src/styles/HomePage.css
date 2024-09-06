@@ -1,0 +1,285 @@
+/* Variables de base pour faciliter la maintenance */
+:root {
+  --primary-color: #009DE1;
+  --secondary-color:#CC6600;
+  --text-color: #333;
+  --background-color: #f5f7fa;
+  --button-background: #ff8c00;
+  --button-hover-background: #e07700;
+  --button-text-color: white;
+  --border-radius: 10px;
+  --max-width: 1200px;
+  --padding: 16px;
+}
+
+div#root {
+  width: 100vw;
+}
+
+.home-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background-color: var(--background-color);
+}
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background-color: #e6f7fb;
+  border-radius: var(--border-radius);
+  margin-bottom: 40px;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: bold;
+  color: black;
+  margin-top: 1px;
+  text-align: center;
+}
+
+.hero-description {
+  font-size: 20px;
+  color: black;
+  margin-bottom: 24px;
+  text-align: center;
+  margin-right: 2vw;
+}
+
+.learn-more-button {
+  background-color : #FF9933;
+  color: var(--button-text-color);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-left: -1vw;
+}
+
+.learn-more-button:hover {
+  background-color:#22BBEA;
+  
+}
+
+.hero-image img {
+  max-width: 40vw;
+  border-radius: var(--border-radius);
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  background-color: white;
+}
+
+.connect-section {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.about-section {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.section-title {
+  font-size: 24px;
+  color: black;
+  margin-bottom: 24px;
+  text-align: center;
+  border-bottom: 5px solid orange;
+}
+ .about-section1{
+  background-color: #f9fafb;
+  text-align: left;
+  width: 550px;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+ }
+
+.role-options {
+  margin-bottom: 24px;
+}
+
+.role-option {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.role-option input {
+  margin-right: 8px;
+}
+
+
+button.google-login-button {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+  color:#fff;
+  background-color: #130d07;
+  cursor: pointer;
+  transition: all .6s ease;
+}
+
+button.google-login-button svg {
+  height: 24px;
+}
+
+button.google-login-button:hover {
+  transform: scale(1.02);
+}
+
+.login-button {
+  text-decoration: none;
+}
+
+.about-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-list li {
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: black;
+  position: relative;
+  padding-left: 24px;
+}
+
+.about-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--secondary-color);
+}
+
+.hero-image {
+  width: 70%; /* Largeur du conteneur augmenté de 10% */
+  height: 90vh; /* Hauteur du conteneur augmentée de 10% */
+  overflow: hidden; /* Assure que le contenu ne dépasse pas le conteneur */
+  position: relative;
+  border-radius: var(
+    --border-radius
+  ); /* Ajoute un border-radius si nécessaire */
+  margin: 0 auto; /* Centre le conteneur */
+}
+
+.slider {
+  display: flex;
+  width: 300%; /* Pour permettre le slide avec trois images */
+  animation: slide 10s infinite; /* Animation continue pour le slider */
+  margin: 0; /* Élimine les marges entre les images */
+  padding: 0; /* Élimine les padding entre les images */
+}
+
+.slider img {
+  width: 50%;
+  height: 50%;
+  flex: 0 0 100%;
+  object-fit: contain; /* Assure que l'image couvre tout le conteneur tout en affichant l'image entière */
+  border-radius: var(
+    --border-radius
+  ); /* Applique le border-radius pour les images */
+  transition: transform 1s ease-in-out; /* Transition douce pour le redimensionnement */
+  margin: 0; /* Supprime les marges */
+  padding: 0; /* Supprime les padding */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  33% {
+    transform: translateX(-28%);
+  } /* Réduit le temps que prend chaque image pour passer */
+  66% {
+    transform: translateX(-57%);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(2%);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+  }
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .learn-more-button {
+    padding: 5px 10px;
+    margin-top: 50px;
+  }
+
+  .slider img {
+    object-fit: cover;
+    margin-top: 70px;
+  }
+
+  .info-section {
+    flex-direction: column;
+    margin-right: 10vw;
+  }
+
+  .connect-section,
+  .about-section {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .learn-more-button {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .about-list li {
+    font-size: 16px;
+  }
+}

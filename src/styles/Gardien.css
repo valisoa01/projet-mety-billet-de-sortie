@@ -1,0 +1,96 @@
+.list-container {
+    background-color: #c9dfee;
+    padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute un effet d'ombre pour un design moderne */
+    transition: all 0.3s ease-in-out; /* Animation de transition pour plus de fluidité */
+}
+
+.title {
+    text-align: center;
+    font-size: 28px; /* Légèrement agrandi pour plus d'impact */
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Arial', sans-serif; /* Police moderne et facile à lire */
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajout d'une légère ombre à la table */
+    font-size: 14px; /* Taille de texte réduite pour améliorer la lisibilité */
+}
+
+.students-table thead {
+    background-color: #c05600;
+    color: white;
+}
+
+.students-table th, .students-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+.students-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.students-table tbody tr:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+
+/* Styles responsive */
+@media (max-width: 1024px) {
+    .list-container {
+        width: 90%; /* Réduit la largeur sur les écrans moyens */
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .students-table th, .students-table td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .list-container {
+        width: 100%; /* Prend toute la largeur disponible sur mobile */
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .students-table th, .students-table td {
+        padding: 8px; /* Réduction de la taille des cellules pour les petits écrans */
+        font-size: 12px;
+    }
+
+    .students-table {
+        font-size: 12px; /* Réduction de la taille globale du texte */
+    }
+}
+
+@media (max-width: 480px) {
+    .list-container {
+        padding: 5px; /* Réduction supplémentaire du padding pour les très petits écrans */
+    }
+
+    .title {
+        font-size: 18px; /* Plus petite taille pour les très petits écrans */
+    }
+
+    .students-table th, .students-table td {
+        padding: 5px; /* Plus petit padding pour les très petits écrans */
+    }
+}
+

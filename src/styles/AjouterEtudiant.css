@@ -1,0 +1,131 @@
+.form-container {
+ 
+  padding: 20px;
+  border-radius: 10px; /* Coins arrondis */
+  width: 90%;
+  max-width: 400px; /* Limite la largeur maximale */
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre autour du formulaire */
+}
+.back-btn1 {
+  margin-left: 20px;
+  color: #e87c33; /* Couleur du texte du bouton */
+  margin-right: 20px;
+  font-size: 18px;
+  color: #ddd;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-decoration: none; /* Pas de lien sur le bouton */
+  transition: color 0.3s ease; /* Transition de la couleur lors du survol */
+  text-decoration: none; /* Pas de lien sur le bouton */
+  width: 10%; 
+}
+ 
+.form-container h2 {
+  text-align: center;
+  color: #000000; /* Couleur du texte du titre */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #000000; /* Couleur du texte des labels */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #000000; /* Bordure noire des champs de texte */
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #e87c33; /* Couleur de fond du bouton */
+  color: #ffffff; /* Couleur du texte du bouton */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  /* background-color: #cc6a2a; */
+}
+
+/* Media queries pour des tailles d'écran spécifiques */
+@media (min-width: 600px) {
+  .form-container {
+      padding: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .form-container {
+      padding: 40px;
+  }
+}
+
+
+
+.form-group input {
+  font-size: 14px;
+}
+
+button {
+  font-size: 14px;
+  padding: 10px;
+}
+
+/* Styles pour le tableau des étudiants */
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.students-table th, .students-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.students-table th {
+  background-color: #f4f4f4;
+}
+
+.students-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.students-table tr:hover {
+  background-color: #ddd;
+}
+
+/* Ajoutez ces styles à votre fichier CSS */
+.students-table-container {
+  margin-top: 20px;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table th, .students-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.students-table th {
+  background-color: #f4f4f4;
+  text-align: left;
+}

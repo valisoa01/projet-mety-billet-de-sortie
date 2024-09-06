@@ -1,0 +1,172 @@
+.container {
+  background-color: #f5f5f5; /* Couleur plus douce pour le fond */
+  padding: 20px;
+  border-radius: 15px; /* Bordures plus arrondies pour un look moderne */
+  width: 90%;
+  max-width: 1000px; /* Augmenté pour des écrans plus larges */
+  margin: 20px auto;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Ombre plus visible */
+}
+.back-btn2 {
+  margin-left: 20px;
+  color: #e87c33; /* Couleur du texte du bouton */
+  margin-right: 20px;
+  font-size: 18px;
+  color: #ddd;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-decoration: none; /* Pas de lien sur le bouton */
+  transition: color 0.3s ease; /* Transition de la couleur lors du survol */
+  text-decoration: none; /* Pas de lien sur le bouton */
+  width: 10%; 
+}
+
+h2 {
+  text-align: center;
+  color: #333333; /* Couleur légèrement plus douce */
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Police plus moderne */
+  font-size: 24px; /* Taille de police augmentée pour plus de visibilité */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 15px; /* Augmenté pour plus d'espace */
+  border: 1px solid #dddddd; /* Bordures plus douces */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+table th {
+  background-color: #00a7a7; /* Couleur plus vive */
+  color: #ffffff;
+  font-size: 18px;
+}
+
+table td {
+  background-color: #ffffff;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 20px; /* Boutons plus larges et mieux proportionnés */
+  border: none;
+  border-radius: 8px; /* Bordures plus arrondies */
+  cursor: pointer;
+  margin: 10px 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px; /* Taille de police augmentée */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout d'une transition pour l'effet de survol */
+}
+
+button:hover {
+  transform: scale(1.05); /* Léger agrandissement au survol */
+}
+
+.info-button {
+  background-color: #ffa726; /* Couleur vive pour attirer l'attention */
+  color: #ffffff;
+}
+
+.info-button:hover {
+  background-color: #fb8c00; /* Couleur d'accentuation */
+}
+
+.delete-button {
+  background-color: #e53935; /* Rouge plus vif pour alerter */
+  color: #ffffff;
+}
+
+.delete-button:hover {
+  background-color: #c62828; /* Couleur d'accentuation */
+}
+
+.confirm-dialog {
+  background-color: #ffffff;
+  padding: 30px; /* Plus d'espace pour les dialogues */
+  border-radius: 15px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Ombre plus dramatique */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-align: center;
+  max-width: 90%; /* S'adapte mieux aux petits écrans */
+}
+
+.confirm-dialog p {
+  margin-bottom: 20px;
+  font-size: 18px; /* Texte plus grand pour une meilleure lisibilité */
+  color: #333333;
+}
+
+.confirm-button {
+  background-color: #008080;
+  color: #ffffff;
+}
+
+.confirm-button:hover {
+  background-color: #006666;
+}
+
+.cancel-button {
+  background-color: #ffa726;
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.cancel-button:hover {
+  background-color: #fb8c00;
+}
+
+/* Media Queries pour le responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    width: 95%;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  table th, table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 12px;
+    margin: 5px;
+  }
+
+  .confirm-dialog {
+    padding: 20px;
+  }
+
+  .confirm-dialog p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 18px;
+  }
+
+  button {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .confirm-dialog p {
+    font-size: 14px;
+  }
+}
