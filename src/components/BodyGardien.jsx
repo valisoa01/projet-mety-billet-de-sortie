@@ -42,9 +42,9 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
     switch (selectedMenu) {
         case 'home':
             content = (
-                <div style={styles.bodyConten}>
-                    <div style={styles.tableContent}>
-                    <div className="list-container">
+                <div style={styles.bodyCon}>
+                    <div style={styles.tableCon}>
+                   
                         <h1 className="title">Listes des étudiants sortis</h1>
                         <table className="students-table">
                             <thead>
@@ -74,7 +74,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
                                 ))}
                             </tbody>
                         </table>
-                    </div>
+                    
                     </div>
                 </div>
             );
@@ -82,7 +82,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
 
        case 'settings':
             content = (
-                <div style={styles.bodyContent1}>
+                <div style={styles.bodyCon}>
                     <div style={styles.body1}>
                         <h1 style={styles.titre}>Etudiant chez Passerelles Numériques Madagascar</h1>
                         <div style={styles.form}>
@@ -109,7 +109,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
             break;
             case 'notifications': 
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCon}>
                     <div className="notification-box">
                         <div className="header">
                             <h2>Boîte de réception</h2>
@@ -145,7 +145,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
 
             case 'user':
             content = (
-                <div style={styles.bodyContent}>                    
+                <div style={styles.bodyCon}>                    
                     <div style={styles.card}>
                         <div style={styles.profileImageContainer}>
                             <img src=""  alt="Photo" style={styles.profileImg}/>
@@ -161,7 +161,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
 
         case 'logout':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCon}>
                     <div style={styles.container}>
                         <div style={styles.content}>
                             <div style={styles.card}>
@@ -193,7 +193,7 @@ const styles =  {
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         padding: '40px',
         maxWidth: '500px',
-        width: '90%', // S'adapte à la taille de l'écran
+        width: '90vh', // S'adapte à la taille de l'écran
         textAlign: 'center',
         '@media (max-width: 768px)': {
             padding: '20px',
@@ -207,6 +207,20 @@ const styles =  {
         color: '#333',
         backgroundColor:'#FF9933',
     },
+    tableCon:{
+        marginLeft:'-200px',
+        width:'50%',
+        height:'50%',
+        '@media (max-width: 768px)':{
+            width:'50%',
+            justifyContent:'center',
+            display:'column',
+        },
+        '@media (max-width: 348px)':{
+            width:'50%',
+            display:'column',
+        },
+    },
     bodyContent: {
         display: 'flex',
         justifyContent: 'center',
@@ -216,7 +230,13 @@ const styles =  {
         padding: '20px',
         marginLeft:'10px',
      
-        width: '1400px',
+        width: '90vh',
+    },
+    tableCont:{
+        marginLeft:'-200px',
+        '@media (max-width: 768px)':{
+            width:'100px',
+        },
     },
 
     container:{
@@ -233,13 +253,7 @@ const styles =  {
         marginLeft:'90px',
         width: '1400px',
     },
-    tableContent:{
-        width:'1200px',
-        marginLeft:'-350px',
-        '@media (max-width: 768px)':{
-            width:'100px',
-        },
-    },
+  
         actions: {
             display: 'flex',
             flexDirection: 'column',
@@ -247,17 +261,19 @@ const styles =  {
             alignItems: 'center',
             width: '100%',
         },
-        illustration: {
-            maxWidth: '100%',
-            height: 'auto',
-            marginBottom: '20px',
-    
+        
+        bodyCon:{
+            marginLeft:'240px',
+            marginTop:'8px',
+            width:'65%',
+            height:'50vh',
+            
             '@media (max-width: 768px)': {
-                maxWidth: '80%',
-                marginBottom: '10px',
+                minWidth: '20%',
             },
-            '@media (max-width: 480px)': {
-                maxWidth: '100%',
+            '@media (max-width: 348px)': {
+                minWidth: '20%',
+
             },
         },
         titre: {
@@ -273,7 +289,14 @@ const styles =  {
         },
         titretab:{
             color: '#333',
-            backgroundColor:'#22BBEA',
+            backgroundColor:'#FF9933',
+            '@media (max-width: 768px)': {
+                fontSize: '12px',
+                backgroundColor:'#000000',
+            },
+                '@media (max-width: 348px)': {
+                fontSize: '12px',},
+
 
         },
         btn: {
@@ -480,11 +503,7 @@ const styles =  {
             color: '#AAAAAA',
             fontSize: '14px',
         },
-        container: {
-            display: 'flex',
-            height: '100vh',
-            backgroundColor: '#F0F4F8',
-        },
+       
         content: {
             flex: 1,
             display: 'flex',

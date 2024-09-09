@@ -1,4 +1,4 @@
-import privacyPolicy from "../styles/privacyPolicy.css"
+import "../styles/privacyPolicy.css";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
         <strong>Billet de Sortie</strong>
       </h1>
       <p>
-        <em>Dernière mise à jour : [Date]</em>
+        <em>Dernière mise à jour : [08/09/2024]</em>
       </p>
 
       <h2>1. Introduction</h2>
@@ -94,7 +94,7 @@ const PrivacyPolicy = () => {
       </ul>
       <p>
         Pour exercer ces droits, contactez-nous à{" "}
-        <a href="mailto:[Contact Email]">[Contact Email]</a>.
+        <a href="mailto:[Contact Email]">[info.madagasikara@passerellesnumeriques.org]</a>.
       </p>
 
       <h2>7. Cookies et technologies similaires</h2>
@@ -123,7 +123,7 @@ const PrivacyPolicy = () => {
       <h2>11. Contact</h2>
       <p>
         Pour toute question, veuillez nous contacter à{" "}
-        <a href="mailto:[Contact Email]">[Contact Email]</a>.
+        <a href="mailto:[Contact Email]">[info.madagasikara@passerellesnumeriques.org]</a>.
       </p>
     </div>
     <Footer />

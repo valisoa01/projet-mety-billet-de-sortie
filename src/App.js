@@ -15,6 +15,7 @@ import ModifierHeureSortie from './components/ModifierHeureSortie';
 import Apropos from './pages/A propos';
 import SortieBille from './components/SortieBille';
 import PrivacyPolicy from './pages/privacy-policy'
+import Fonctionnement from './pages/Fonctionnement';
  
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/Connections/AdminHome/ModifierHeureSortie" element={<ModifierHeureSortie />} />
           <Route path="/student-home/MainEtudiant/SortieBille" element={<SortieBille/>} />  
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />  
+          <Route path="/Fonctionnement" element={<Fonctionnement />} />
         </Routes>
       </Router>
     </div>

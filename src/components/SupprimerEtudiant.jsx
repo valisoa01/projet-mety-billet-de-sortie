@@ -13,7 +13,7 @@ function SupprimerEtudiant() {
     const fetchEtudiants = async () => {
       const querySnapshot = await getDocs(collection(db, 'EtudiantTab'));
       const students = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setEtudiants(students.sort((a, b) => a.currentId - b.currentId));
+      setEtudiants(students.sort((a, b) => a.Identifiant - b.Identifiant));
     };
     
     fetchEtudiants();
@@ -33,71 +33,71 @@ function SupprimerEtudiant() {
 
   return (
     <>
-    <NavLink to="/Connections/AdminHome">
-                <button className="back-btn1">Retour</button>
-     </NavLink>
-    <div className="container">
-      <h2>Liste des étudiants</h2>
-      {etudiants.length === 0 ? (
-        <p>Aucun étudiant trouvé.</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Email</th>
-              <th>Téléphone</th>
-              <th>Nom</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {etudiants.map(student => (
-              <tr key={student.id}>
-                <td>{student.currentId}</td>
-                <td>{student.email}</td>
-                <td>{student.tel}</td>
-                <td>{student.nomEleve}</td>
-                <td>
-                  <button
-                    className="info-button"
-                    onClick={() => alert(`Nom: ${student.nomEleve}\nEmail: ${student.email}\nTéléphone: ${student.tel}`)}
-                  >
-                    Voir Info
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={() => {
-                      setStudentToDelete(student.id);
-                      setShowConfirm(true);
-                    }}
-                  >
-                    Supprimer
-                  </button>
-                </td>
+      <NavLink to="/Connections/AdminHome">
+        <button className="back-btn1">Retour</button>
+      </NavLink>
+      <div className="container">
+        <h2>Liste des étudiants</h2>
+        {etudiants.length === 0 ? (
+          <p>Aucun étudiant trouvé.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Identifiant</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Nom</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {showConfirm && (
-        <div className="confirm-dialog">
-          <p>Êtes-vous sûr de vouloir supprimer cet étudiant ?</p>
-          <button
-            className="confirm-button"
-            onClick={() => handleDelete(studentToDelete)}
-          >
-            Valider
-          </button>
-          <button
-            className="cancel-button"
-            onClick={() => setShowConfirm(false)}
-          >
-            Annuler
-          </button>
-        </div>
-      )}
-    </div>
+            </thead>
+            <tbody>
+              {etudiants.map(student => (
+                <tr key={student.id}>
+                  <td>{student.identifiant}</td>
+                  <td>{student.email}</td>
+                  <td>{student.tel}</td>
+                  <td>{student.nomEleve}</td>
+                  <td>
+                    <button
+                      className="info-button"
+                      onClick={() => alert(`Nom: ${student.nomEleve}\nEmail: ${student.email}\nTéléphone: ${student.tel}`)}
+                    >
+                      Voir Info
+                    </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => {
+                        setStudentToDelete(student.id);
+                        setShowConfirm(true);
+                      }}
+                    >
+                      Supprimer
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+        {showConfirm && (
+          <div className="confirm-dialog">
+            <p>Êtes-vous sûr de vouloir supprimer cet étudiant ?</p>
+            <button
+              className="confirm-button"
+              onClick={() => handleDelete(studentToDelete)}
+            >
+              Valider
+            </button>
+            <button
+              className="cancel-button"
+              onClick={() => setShowConfirm(false)}
+            >
+              Annuler
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 }

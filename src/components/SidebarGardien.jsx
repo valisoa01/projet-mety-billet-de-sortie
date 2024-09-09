@@ -6,7 +6,7 @@ import imageuser from '../assets/Images/user.png';
 import mylogo from '../assets/Images/Logo.png';
 import imagenotification from '../assets/Images/notification.png';
 
-function SidebarEtudiant({ onSelectMenu }) {
+function SidebarGardien({ onSelectMenu }) {
     const [hovered, setHovered] = useState('');
 
     const handleMouseEnter = (menu) => {
@@ -18,7 +18,7 @@ function SidebarEtudiant({ onSelectMenu }) {
     };
 
     return (
-        <div style={styles.SidebarGardient}>
+        <div style={styles.SidebarEtudiant}>
             <img src={mylogo} alt="Logo" style={styles.logo} />
             {[
                 { name: 'home', image: imagehome },
@@ -50,21 +50,8 @@ function SidebarEtudiant({ onSelectMenu }) {
 }
 
 const styles = {
-    pageWrapper: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',  // Assure que tout est centré verticalement
-        backgroundColor: '#F0F4F8', // Couleur de fond agréable
-        padding: '20px',
-        
-        '@media (max-width: 768px)': {
-            padding: '10px',
-            height: 'auto',
-        },
-    },
-    SidebarGardient: {
-        width: '120px',
+    SidebarEtudiant: {
+        width: '80px',
         backgroundColor: '#009DE1',
         height: '95vh',
         display: 'flex',
@@ -74,29 +61,12 @@ const styles = {
         borderRadius: '20px',
         marginTop: '2px',
         marginBottom: '2px',
-        transition: 'width 0.3s ease-in-out',
-        marginLeft: '2px',
-
-        '@media (max-width: 768px)': {
-            width: '60px', 
-            height: 'auto',
-            borderRadius: '10px',
-        },
-        '@media (max-width: 480px)': {
-            width: '50px',
-        }
+        transition: 'all 0.3s ease',
     },
     logo: {
         width: '60px',
         marginBottom: '30px',
-        transition: 'width 0.3s ease-in-out',
-
-        '@media (max-width: 768px)': {
-            width: '50px',
-        },
-        '@media (max-width: 480px)': {
-            width: '40px',
-        }
+        transition: 'width 0.3s ease',
     },
     menuItem: {
         width: '60px',
@@ -108,45 +78,93 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         transition: 'all 0.3s ease',
-
-        '@media (max-width: 768px)': {
-            width: '50px',
-            height: '70px',
-        },
-        '@media (max-width: 480px)': {
-            width: '40px',
-            height: '60px',
-        }
     },
     icon: {
         width: '20px',
         height: '20px',
-        transition: 'width 0.3s ease-in-out, height 0.3s ease-in-out',
-
-        '@media (max-width: 768px)': {
-            width: '16px',
-            height: '16px',
-        },
-        '@media (max-width: 480px)': {
-            width: '12px',
-            height: '12px',
-        }
+        transition: 'all 0.3s ease',
     },
     label: {
         marginTop: '5px',
         fontSize: '10px',
         color: 'white',
         textTransform: 'capitalize',
-        transition: 'font-size 0.3s ease-in-out',
-
-        '@media (max-width: 768px)': {
-            fontSize: '9px',
+        transition: 'font-size 0.3s ease',
+    },
+    // Styles pour les écrans moyens et petits
+    '@media (max-width: 1024px)': {
+        SidebarEtudiant: {
+            width: '60px',
+            height: 'auto',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            padding: '10px 0',
+            borderRadius: '0 0 20px 20px',
         },
-        '@media (max-width: 480px)': {
+        logo: {
+            width: '40px',
+            marginBottom: '0',
+        },
+        menuItem: {
+            width: '50px',
+            height: '70px',
+            marginBottom: '0',
+            flexDirection: 'row',
+        },
+        icon: {
+            width: '18px',
+            height: '18px',
+        },
+        label: {
+            marginTop: '0',
             fontSize: '8px',
-        }
-    }
+        },
+    },
+    '@media (max-width: 768px)': {
+        SidebarEtudiant: {
+            width: '100%',
+            height: 'auto',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            padding: '10px 0',
+            borderRadius: '0',
+        },
+        logo: {
+            width: '30px',
+        },
+        menuItem: {
+            width: '40px',
+            height: '60px',
+        },
+        icon: {
+            width: '16px',
+            height: '16px',
+        },
+        label: {
+            fontSize: '7px',
+        },
+    },
+    // Styles pour les très petits écrans (mobile)
+    '@media (max-width: 480px)': {
+        SidebarEtudiant: {
+            padding: '5px 0',
+        },
+        logo: {
+            width: '25px',
+        },
+        menuItem: {
+            width: '30px',
+            height: '50px',
+        },
+        icon: {
+            width: '14px',
+            height: '14px',
+        },
+        label: {
+            fontSize: '6px',
+        },
+    },
 };
 
 
-export default SidebarEtudiant;
+export default SidebarGardien;
