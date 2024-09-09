@@ -44,7 +44,7 @@ const MainEtudiant = ({ selectedMenu }) => {
     switch (selectedMenu) {
         case 'home':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCon}>
                     <div style ={styles.roud} className="main-content">
                         <div style={styles.cont} className="button-container">
                             <NavLink to="/student-home/MainEtudiant/SortieBille" className="button-link">
@@ -63,12 +63,13 @@ const MainEtudiant = ({ selectedMenu }) => {
                         </div>
                     </div>
                 </div>
+            
             );
             break;
 
         case 'settings':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCon}>
                     <div style={styles.body1}>
                         <h1 style={styles.titre}>Etudiant chez Passerelles Numériques Madagascar</h1>
                         <div style={styles.form}>
@@ -96,7 +97,7 @@ const MainEtudiant = ({ selectedMenu }) => {
 
             case 'notifications':
                 content = (
-                    <div style={styles.bodyContent}>
+                    <div style={styles.bodyCon}>
                         <div style={styles.notificationContainer}>
                             <div style={styles.notificationHeader}>
                                 <h3 >Notifications</h3>
@@ -136,7 +137,7 @@ const MainEtudiant = ({ selectedMenu }) => {
 
         case 'user':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCon}>
                     <div style={styles.card}>
                         <div style={styles.profileImageContainer}>
                             <img 
@@ -156,7 +157,7 @@ const MainEtudiant = ({ selectedMenu }) => {
 
         case 'logout':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCon}>
                     <div style={styles.container}>
                         <div style={styles.content}>
                             <div style={styles.carde}>
@@ -193,22 +194,21 @@ const styles =  {
         },
     },
     roud:{
-       marginLeft:'-100px',
-       marginBottom:'200px',
-       height:'100%',
-       marginTop:'100px',
-    },
-    cont:{
+    //    marginLeft:'-100px',
+    //    marginBottom:'200px',
+    //    height:'100%',
+    //    marginTop:'100px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginBottom: '20px',
+    width: '90%',
+    maxWidth: '600px',
+    '@media (max-width: 768px)': {
         width: '100%',
-        height: '84vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: '10px',
-        padding: '0',
-        marginTop:'100px',
-        marginLeft: '40px',
+        padding: '10px',
     },
+    },
+     
     bodyContent: {
         display: 'flex',
         justifyContent: 'center',
@@ -223,6 +223,36 @@ const styles =  {
         width:'400px',
         height:'00px',
     },
+    bodyCon:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '80vh', // Occupe toute la hauteur de la fenêtre
+        padding: '20px',
+        // margin:'50px',
+        margin: 'auto',
+        //width: '90%',
+        width:'100%',
+        maxWidth:'1200px',
+        // marginLeft: '40px',
+        // marginTop: '100px',
+        // '@media (max-width: 360px)': {
+        //     padding: '10px 0',
+        //     width: '20px',
+        //     marginLeft: '-10px',
+        //     marginBottom: '10px',},
+
+        '@media (max-width: 768px)': {
+            // padding: '10px 0',
+            // width: '40px',
+            // marginLeft: '-10px',
+            flexDirection:'column',
+            padding:'10px',
+
+        },
+
+    },
+
 
     container:{
         width: '400px',
@@ -236,8 +266,8 @@ const styles =  {
             width: '100%',
         },
         illustration: {
-            maxWidth: '100%',
-            height: 'auto',
+            Width: '100%',
+            height: '100%',
             marginBottom: '20px',
     
             '@media (max-width: 768px)': {
@@ -289,27 +319,46 @@ const styles =  {
         },
        
         card: {
-            width: '600px',
-            heigth:'600px',
+            // width: '600px',
+            // heigth:'600px',
+            // backgroundColor: '#FFFFFF',
+            // borderRadius: '10px',
+            // padding: '20px',
+            // textAlign: 'center',
+            // boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+            // fontFamily: 'Arial, sans-serif',
+    
+            // '@media (max-width: 768px)': {
+            //     width: '150px',
+            //     marginBottom: '20px',
+            // },
+
+            width: '100%',
+            maxWidth: '600px',
             backgroundColor: '#FFFFFF',
             borderRadius: '10px',
             padding: '20px',
             textAlign: 'center',
             boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            fontFamily: 'Arial, sans-serif',
-    
+            margin: '10px',
             '@media (max-width: 768px)': {
-                width: '150px',
-                marginBottom: '20px',
+                maxWidth: '100%',
             },
         },
         
         profileImageContainer: {
+            // width: '100px',
+            // height: '100px',
+            // borderRadius: '50%',
+            // overflow: 'hidden',
+            // margin: '0 auto 10px auto',
+            // border: '2px solid #3FB9D7',
+
             width: '100px',
             height: '100px',
             borderRadius: '50%',
             overflow: 'hidden',
-            margin: '0 auto 10px auto',
+            margin: '0 auto 10px',
             border: '2px solid #3FB9D7',
         },
         profileImg: {

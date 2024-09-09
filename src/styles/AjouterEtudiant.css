@@ -1,91 +1,86 @@
+/* Container du formulaire */
 .form-container {
- 
   padding: 20px;
-  border-radius: 10px; /* Coins arrondis */
+  border-radius: 10px;
   width: 90%;
-  max-width: 400px; /* Limite la largeur maximale */
-  margin: 0 auto;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombre autour du formulaire */
+  max-width: 450px; /* Taille maximale pour les grands écrans */
+  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce pour créer de la profondeur */
+  background-color: #fff; /* Arrière-plan blanc pour un contraste propre */
+  transition: all 0.3s ease-in-out;
 }
-.back-btn1 {
-  margin-left: 20px;
-  color: #e87c33; /* Couleur du texte du bouton */
-  margin-right: 20px;
-  font-size: 18px;
-  color: #ddd;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-decoration: none; /* Pas de lien sur le bouton */
-  transition: color 0.3s ease; /* Transition de la couleur lors du survol */
-  text-decoration: none; /* Pas de lien sur le bouton */
-  width: 10%; 
-}
- 
+
 .form-container h2 {
   text-align: center;
-  color: #000000; /* Couleur du texte du titre */
+  color: #2E3A59; /* Couleur moderne et agréable pour les titres */
   margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  color: #000000; /* Couleur du texte des labels */
+  margin-bottom: 8px;
+  color: #333; /* Couleur douce pour le texte des labels */
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .form-group input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #000000; /* Bordure noire des champs de texte */
-  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc; /* Bordures plus douces */
+  border-radius: 8px;
   box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #e87c33; /* Bordure orange lors du focus */
+  outline: none;
 }
 
 button {
   display: block;
   width: 100%;
-  padding: 10px;
-  background-color: #e87c33; /* Couleur de fond du bouton */
-  color: #ffffff; /* Couleur du texte du bouton */
+  padding: 12px;
+  background-color: #e87c33;
+  color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 1rem;
   margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  /* background-color: #cc6a2a; */
+  background-color: #d46f29; /* Couleur plus foncée au survol */
 }
 
-/* Media queries pour des tailles d'écran spécifiques */
-@media (min-width: 600px) {
-  .form-container {
-      padding: 30px;
-  }
+.back-btn1 {
+  margin-left: 20px;
+  color: #e87c33;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-@media (min-width: 768px) {
-  .form-container {
-      padding: 40px;
-  }
-}
-
-
-
-.form-group input {
-  font-size: 14px;
-}
-
-button {
-  font-size: 14px;
-  padding: 10px;
+.back-btn1:hover {
+  color: #d46f29;
 }
 
 /* Styles pour le tableau des étudiants */
+.students-table-container {
+  margin-top: 20px;
+}
+
 .students-table {
   width: 100%;
   border-collapse: collapse;
@@ -94,12 +89,15 @@ button {
 
 .students-table th, .students-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px;
+  font-size: 0.9rem;
   text-align: left;
 }
 
 .students-table th {
   background-color: #f4f4f4;
+  font-weight: 600;
+  color: #333;
 }
 
 .students-table tr:nth-child(even) {
@@ -110,22 +108,54 @@ button {
   background-color: #ddd;
 }
 
-/* Ajoutez ces styles à votre fichier CSS */
-.students-table-container {
-  margin-top: 20px;
+/* Responsive Design: Ajustements pour différentes tailles d'écrans */
+@media (max-width: 768px) {
+  .form-container {
+    max-width: 80%;
+    padding: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .students-table th, .students-table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
 }
 
-.students-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+@media (max-width: 480px) {
+  .form-container {
+    width: 40%;
+    padding: 15px;
+  }
+  .form-container h2 {
+    font-size: 1.5rem;
+  }
 
-.students-table th, .students-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+  .form-group input {
+    padding: 6px;
+    font-size: 0.85rem;
+  }
 
-.students-table th {
-  background-color: #f4f4f4;
-  text-align: left;
+  button {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .students-table th, .students-table td {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
 }

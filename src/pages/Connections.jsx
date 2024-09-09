@@ -5,8 +5,9 @@ import Footer from '../components/Footer';
 import MyAdminImage from '../assets/Images/admin.png';
 import MyGardienImage from '../assets/Images/gardien.png';
 import MyStudentImage from '../assets/Images/etudiant.png';
-import { auth, provider } from '../config/firebase-config';
+import { auth, provider, db } from '../config/firebase-config';
 import { signInWithPopup } from 'firebase/auth';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 const Connections = () => {
@@ -17,25 +18,38 @@ const Connections = () => {
 
     const navigate = useNavigate();
 
-    const signInWithGoogle = async(role) => {
-        const results = await signInWithPopup(auth, provider);
-        const authInfo = {
-            userID: results.user.uid,
-            name: results.user.displayName,
-            profilePhoto: results.user.photoURL,
-            isAuth: true,
-            email: results.user.email,  
-        }
-        localStorage.setItem("auth", JSON.stringify(authInfo));
+    const signInWithGoogle = async (role) => {
+        try {
+            const results = await signInWithPopup(auth, provider);
+            const email = results.user.email;
+            const authInfo = {
+                userID: results.user.uid,
+                name: results.user.displayName,
+                profilePhoto: results.user.photoURL,
+                isAuth: true,
+                email: email,
+            };
+            localStorage.setItem("auth", JSON.stringify(authInfo));
 
-        if (role === 'etudiant') {
-            navigate("/Connections/StudentHome");
-        } else if (role === 'administrateur') {
-            navigate("/Connections/AdminHome");
-        } else if (role === 'gardien') {
-            navigate("/Connections/GardeHome");
+            if (role === 'etudiant') {
+                // Vérification pour les étudiants
+                const studentQuery = query(collection(db, 'EtudiantTab'), where('email', '==', email));
+                const querySnapshot = await getDocs(studentQuery);
+                if (!querySnapshot.empty) {
+                    navigate("/Connections/StudentHome");
+                } else {
+                    alert('Vous n\'êtes pas autorisé à accéder en tant qu\'étudiant.');
+                }
+            } else if (role === 'administrateur') {
+                navigate("/Connections/AdminHome");
+            } else if (role === 'gardien') {
+                navigate("/Connections/GardeHome");
+            }
+        } catch (error) {
+            console.error('Erreur lors de la connexion avec Google :', error);
+            alert('Erreur lors de la connexion avec Google.');
         }
-    }
+    };
 
     return (
         <>

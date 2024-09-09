@@ -20,9 +20,9 @@ function AdminBody({ selectedMenu }) {
         
         case 'home':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCont}>
                      
-                    <div style={styles.actions}>
+                    <div style={styles.body2}>
                         <h1 style={styles.titre}>Responsable de la vie internat</h1>
                             <NavLink to="/Connections/AdminHome/AjouterEtudiant">                          
                                 <h2 style={styles.btn}>Ajouter un étudiant</h2>  
@@ -47,7 +47,7 @@ function AdminBody({ selectedMenu }) {
                             </NavLink>                           
                     </div> 
                     <div>               
-                        <img src={PhotoAdmin} alt="Illustration" style={styles.illustration} />                                    
+                        <img src={PhotoAdmin} alt="Illustration" style={styles.illustration} Width='70%'/>                                    
                     </div>   
                 </div>
             );
@@ -55,9 +55,9 @@ function AdminBody({ selectedMenu }) {
 
             case 'settings':
                 content = (
-                    <div style={styles.bodyContent}>
+                    <div style={styles.bodyCont}>
                         <div style={styles.body1}>
-                            <h1 style={styles.titre}>Etudiant chez Passerelles Numériques Madagascar</h1>
+                            <h1 style={styles.titre1}>Etudiant chez Passerelles Numériques Madagascar</h1>
                             <div style={styles.form}>
                                 <div style={styles.formGroup}>
                                     <label style={styles.label}>Nom d'utilisateur :</label>
@@ -83,7 +83,8 @@ function AdminBody({ selectedMenu }) {
 
         case 'notifications': 
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCont}>
+                    <div style={styles.body1}>
                     <div className="notification-box">
                         <div className="header">
                             <h2>Boîte de réception</h2>
@@ -111,14 +112,16 @@ function AdminBody({ selectedMenu }) {
                             </div>
                             ))}
                         </div>
-                    </div>                   
+                    </div>   
+                    </div>                
                 </div>
             );
             break;
 
         case 'user':
             content = (
-                <div style={styles.bodyContent}>
+                <div style={styles.bodyCont}>
+                    
                     <div style={styles.card}>
                         <div style={styles.profileImageContainer}>
                             <img src=""  alt="Photo" style={styles.profileImg}/>
@@ -132,8 +135,8 @@ function AdminBody({ selectedMenu }) {
 
         case 'logout':
             content = (
-                <div style={styles.bodyContent}>
-                    <div style={styles.container}>
+                <div style={styles.bodyCont}>
+                    <div style={styles.body2}>
     
                         <div style={styles.content}>
                             <div style={styles.carde}>
@@ -182,24 +185,39 @@ const styles = {
             padding: '5px',
         },
     },
-    bodyContent: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    body1: {
+        flex: 1,
+        backgroundColor: '#F0F4F8', // Softer background color for better contrast
+        padding: '40px',
+        borderRadius: '10px',
+        margin: '10px',
+        maxWidth: '80%', // Limit the maximum width for larger screens
+        minHeight: '90vh', // Set to full height
+        display: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
-        gap: '20px',
-        padding: '10px',
-        maxWidth: '1200px',
-        margin: '0 auto',
-
-        '@media (max-width: 768px)': {
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '10px',
-        },
+        width: '40%',
+        marginTop: '45px',
+        marginLeft: '-200px',
     },
+    body2: {
+        flex: 1,
+        backgroundColor: '#F0F4F8', // Softer background color for better contrast
+        padding: '40px',
+        borderRadius: '10px',
+        margin: '10px',
+        maxWidth: '80%', // Limit the maximum width for larger screens
+        minHeight: '90vh', // Set to full height
+        display: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '40%',
+        marginTop: '45px',
+        marginLeft: '-80px',
+    },
+
+    
+  
     actions: {
         display: 'flex',
         flexDirection: 'column',
@@ -211,63 +229,112 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        Width: '20%',
 
         '@media (max-width: 768px)': {
             order: -1, // Move image above text
             marginBottom: '20px',
         },
+        '@media (max-width: 340px)': {
+            order: -1, // Move image above text
+            marginBottom: '20px',
+            width: '30%',
+            height: '20%',
+        },
     },
-    illustration: {
-        maxWidth: '100%',
-        height: 'auto',
-        borderRadius: '10px',
+    bodyCont:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '80vh', // Occupe toute la hauteur de la fenêtre
+        padding: '5px',
+        margin:'20px',
+        width: '100%',
+        marginLeft: '40px',
+        marginTop: '20px',
+      /*   position:'fixed', */
+        '@media (max-width: 360px)': {
+            padding: ' 5px',
+            width: '20%',
+            marginLeft: '10px',
+            },
 
         '@media (max-width: 768px)': {
-            maxWidth: '80%',
+            padding: '7px 0',
+            width: '40%',
+            marginLeft: '-10px',
+
+        },
+
+    },
+    illustration: {
+        height: '30%',
+        borderRadius: '10px',
+        marginBottom: '20px',
+        '@media (max-width: 768px)': {
+            height: '20%',
         },
         '@media (max-width: 480px)': {
-            maxWidth: '100%',
+            height: '15%',
         },
+    },
+    titre1: {
+        fontSize: '24px',
+        fontWeight: 'bold',
+        color: '#3FB9D7',
+        textAlign: 'center',
+        marginBottom: '20px',
     },
     
     titre: {
-        fontSize: '28px',
+        fontSize: '18px',
+        width:'270px',
         color: '#3FB9D7',
         textAlign: 'center',
         marginBottom: '20px',
 
         '@media (max-width: 768px)': {
-            fontSize: '24px',
+            fontSize: '12px',
+            width:'60%',
         },
         '@media (max-width: 480px)': {
-            fontSize: '20px',
+            fontSize: '12px',
+            width:'40%',
         },
     },
     btn: {
         backgroundColor: '#FF9933',
         color: '#FFFFFF',
         fontWeight: 'bold',
-        fontSize: '18px',
+        fontSize: '14px',
         borderRadius: '8px',
         padding: '12px 20px',
-        width: '250px',
+        width: '120%',
         textAlign: 'center',
         margin:'0.5rem 0',
 
         '@media (max-width: 768px)': {
             fontSize: '16px',
             padding: '10px',
-            width: '200px',
+            width: '20%',
         },
         '@media (max-width: 480px)': {
             fontSize: '14px',
             padding: '8px',
-            width: '150px',
+            width: '20%',
         },
+        '@media (max-width: 360px)': {
+            fontSize: '14px',
+            padding: '8px',
+            width: '15%',
+        },
+
         ':hover': {
             backgroundColor: '#FF7800',
         },
     },
+     
+    
     card: {
         width: '300px',
         backgroundColor: '#FFFFFF',
@@ -338,7 +405,7 @@ const styles = {
         }
     },
     input: {      
-        width: '450px',
+        width: '70%', 
         padding: '10px',
         borderRadius: '5px',
         border: '1px solid #CCCCCC',
@@ -346,7 +413,7 @@ const styles = {
         color: '#FFFFFF',
 
         '@media (max-width: 768px)': {
-            width: '80px',
+            width: 'auto',
         },
     },
     buttonGroup: {

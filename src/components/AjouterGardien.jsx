@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../config/firebase-config';
-import { collection, addDoc, doc, getDoc, setDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
-import '../styles/AjouterEtudiant.css'; // Vous pouvez utiliser le même fichier CSS ou en créer un nouveau pour AjouterGardien
+import { collection, addDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
+import '../styles/AjouterEtudiant.css';
 import { NavLink } from 'react-router-dom';
 
 function AjouterGardien() {
+  const [identifiant, setIdentifiant] = useState(''); // Nouveau champ pour l'identifiant
   const [nomGardien, setNomGardien] = useState('');
   const [email, setEmail] = useState('');
   const [tel, setTel] = useState('');
@@ -15,22 +16,16 @@ function AjouterGardien() {
     e.preventDefault();
 
     try {
-      const idDocRef = doc(db, 'GardienTab', 'currentId');
-      const idDoc = await getDoc(idDocRef);
-      const currentId = idDoc.exists() ? idDoc.data().currentId + 1 : 1;
-
       // Ajoutez le nouveau gardien
       await addDoc(collection(db, 'GardienTab'), {
-        currentId,
+        identifiant,  // Sauvegarde de l'identifiant saisi manuellement
         email,
         nomGardien,
         tel,
       });
 
-      // Mettez à jour le document `currentId` avec le nouvel identifiant
-      await setDoc(idDocRef, { currentId });
-
       // Réinitialisez le formulaire
+      setIdentifiant(''); // Réinitialiser le champ identifiant
       setNomGardien('');
       setEmail('');
       setTel('');
@@ -44,7 +39,7 @@ function AjouterGardien() {
 
   useEffect(() => {
     // Observer les changements dans la collection GardienTab
-    const q = query(collection(db, 'GardienTab'), orderBy('currentId', 'asc'));
+    const q = query(collection(db, 'GardienTab'), orderBy('identifiant', 'asc'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const gardiensList = [];
       querySnapshot.forEach((doc) => {
@@ -59,71 +54,80 @@ function AjouterGardien() {
 
   return (
     <>
-     <NavLink to="/Connections/AdminHome">
-                <button className="back-btn1">Retour</button>
-     </NavLink>
-    <div className="form-container">
-      {showForm ? (
-        <>
-          <h2>Ajouter un gardien</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>Nom d'utilisateur :</label>
-              <input
-                type="text"
-                value={nomGardien}
-                onChange={(e) => setNomGardien(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Adresse Email :</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Téléphone :</label>
-              <input
-                type="tel"
-                value={tel}
-                onChange={(e) => setTel(e.target.value)}
-              />
-            </div>
-            <button type="submit">Ajouter</button>
-          </form>
-        </>
-      ) : (
-        <>
-          <button onClick={toggleForm}>Ajouter gardien</button>
-          <div className="students-table-container">
-            <h2>Liste des gardiens</h2>
-            <table className="students-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Email</th>
-                  <th>Téléphone</th>
-                  <th>Nom</th>
-                </tr>
-              </thead>
-              <tbody>
-                {gardiens.map((gardien) => (
-                  <tr key={gardien.id}>
-                    <td>{gardien.currentId}</td>
-                    <td>{gardien.email}</td>
-                    <td>{gardien.tel}</td>
-                    <td>{gardien.nomGardien}</td>
+      <NavLink to="/Connections/AdminHome">
+        <button className="back-btn1">Retour</button>
+      </NavLink>
+
+      <div className="form-container">
+        {showForm ? (
+          <>
+            <h2>Ajouter un gardien</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label>Identifiant :</label> {/* Nouveau champ Identifiant */}
+                <input
+                  type="text"
+                  value={identifiant}
+                  onChange={(e) => setIdentifiant(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Nom d'utilisateur :</label>
+                <input
+                  type="text"
+                  value={nomGardien}
+                  onChange={(e) => setNomGardien(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Adresse Email :</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Téléphone :</label>
+                <input
+                  type="tel"
+                  value={tel}
+                  onChange={(e) => setTel(e.target.value)}
+                />
+              </div>
+              <button type="submit">Ajouter</button>
+            </form>
+          </>
+        ) : (
+          <>
+            <button onClick={toggleForm}>Ajouter gardien</button>
+            <div className="students-table-container">
+              <h2>Liste des gardiens</h2>
+              <table className="students-table">
+                <thead>
+                  <tr>
+                    <th>Identifiant</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Nom</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-      <button onClick={toggleForm}>{showForm ? 'Afficher les gardiens' : 'Ajouter gardien'}</button>
-    </div>
+                </thead>
+                <tbody>
+                  {gardiens.map((gardien) => (
+                    <tr key={gardien.id}>
+                      <td>{gardien.identifiant}</td> {/* Affichage de l'identifiant */}
+                      <td>{gardien.email}</td>
+                      <td>{gardien.tel}</td>
+                      <td>{gardien.nomGardien}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+        <button onClick={toggleForm}>{showForm ? 'Afficher les gardiens' : 'Ajouter gardien'}</button>
+      </div>
     </>
   );
 }

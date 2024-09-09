@@ -1,32 +1,41 @@
+/* Styles pour le conteneur principal */
 .container {
-  background-color: #f5f5f5; /* Couleur plus douce pour le fond */
-  padding: 20px;
-  border-radius: 15px; /* Bordures plus arrondies pour un look moderne */
+  background-color: #f9fafb; /* Couleur claire et moderne pour le fond */
+  padding: 30px;
+  border-radius: 20px; /* Bordures plus douces et modernes */
   width: 90%;
-  max-width: 1000px; /* Augmenté pour des écrans plus larges */
-  margin: 20px auto;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Ombre plus visible */
+  max-width: 1200px; /* Ajustement pour les grands écrans */
+  margin: 40px auto;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+  transition: all 0.3s ease;
 }
+
+/* Bouton retour */
 .back-btn2 {
   margin-left: 20px;
-  color: #e87c33; /* Couleur du texte du bouton */
-  margin-right: 20px;
-  font-size: 18px;
-  color: #ddd;
+  color: #1d3557; /* Couleur bleu foncé pour le texte */
+  font-size: 16px;
   font-weight: bold;
-  margin-bottom: 10px;
-  text-decoration: none; /* Pas de lien sur le bouton */
-  transition: color 0.3s ease; /* Transition de la couleur lors du survol */
-  text-decoration: none; /* Pas de lien sur le bouton */
-  width: 10%; 
+  margin-bottom: 20px;
+  text-decoration: none; /* Pas de lien souligné */
+  width: auto;
+  padding: 10px 20px;
+  background-color: #e87c33; /* Couleur d'accent */
+  border-radius: 8px; /* Bordures arrondies */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-btn2:hover {
+  background-color: #d2691e; /* Effet au survol */
+  transform: scale(1.05); /* Légère animation */
 }
 
 h2 {
   text-align: center;
-  color: #333333; /* Couleur légèrement plus douce */
-  margin-bottom: 20px;
-  font-family: 'Arial', sans-serif; /* Police plus moderne */
-  font-size: 24px; /* Taille de police augmentée pour plus de visibilité */
+  color: #333333; /* Couleur plus douce pour un meilleur contraste */
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif; /* Police moderne et lisible */
+  font-size: 26px; /* Taille de police pour une meilleure lisibilité */
 }
 
 table {
@@ -36,16 +45,17 @@ table {
 }
 
 table th, table td {
-  padding: 15px; /* Augmenté pour plus d'espace */
-  border: 1px solid #dddddd; /* Bordures plus douces */
+  padding: 18px; /* Plus d'espace pour un design plus aéré */
+  border: 1px solid #e0e0e0; /* Bordures plus douces */
   text-align: center;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Police moderne */
 }
 
 table th {
-  background-color: #00a7a7; /* Couleur plus vive */
+  background-color: #00bfa6; /* Couleur d'accent plus moderne */
   color: #ffffff;
   font-size: 18px;
+  text-transform: uppercase; /* Style de texte en majuscule */
 }
 
 table td {
@@ -54,97 +64,97 @@ table td {
 }
 
 button {
-  padding: 12px 20px; /* Boutons plus larges et mieux proportionnés */
+  padding: 14px 25px; /* Boutons plus spacieux */
   border: none;
-  border-radius: 8px; /* Bordures plus arrondies */
+  border-radius: 10px; /* Bordures plus douces */
   cursor: pointer;
   margin: 10px 5px;
-  font-family: 'Arial', sans-serif;
-  font-size: 14px; /* Taille de police augmentée */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout d'une transition pour l'effet de survol */
+  font-family: 'Poppins', sans-serif; /* Police lisible */
+  font-size: 16px; /* Taille de police pour les boutons */
+  transition: all 0.3s ease; /* Transition fluide */
 }
 
 button:hover {
-  transform: scale(1.05); /* Léger agrandissement au survol */
+  transform: scale(1.05); /* Agrandissement léger au survol */
 }
 
 .info-button {
-  background-color: #ffa726; /* Couleur vive pour attirer l'attention */
+  background-color: #42a5f5; /* Couleur vive et moderne pour le bouton Info */
   color: #ffffff;
 }
 
 .info-button:hover {
-  background-color: #fb8c00; /* Couleur d'accentuation */
+  background-color: #1e88e5; /* Effet au survol */
 }
 
 .delete-button {
-  background-color: #e53935; /* Rouge plus vif pour alerter */
+  background-color: #ef5350; /* Rouge vif pour le bouton Supprimer */
   color: #ffffff;
 }
 
 .delete-button:hover {
-  background-color: #c62828; /* Couleur d'accentuation */
+  background-color: #e53935; /* Effet au survol */
 }
 
+/* Boîte de dialogue de confirmation */
 .confirm-dialog {
   background-color: #ffffff;
-  padding: 30px; /* Plus d'espace pour les dialogues */
-  border-radius: 15px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Ombre plus dramatique */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2); /* Ombre plus douce */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
   text-align: center;
-  max-width: 90%; /* S'adapte mieux aux petits écrans */
+  max-width: 400px; /* Ajustement pour mobile */
 }
 
 .confirm-dialog p {
-  margin-bottom: 20px;
-  font-size: 18px; /* Texte plus grand pour une meilleure lisibilité */
+  margin-bottom: 30px;
+  font-size: 20px; /* Texte plus grand et lisible */
   color: #333333;
 }
 
 .confirm-button {
-  background-color: #008080;
+  background-color: #1abc9c;
   color: #ffffff;
 }
 
 .confirm-button:hover {
-  background-color: #006666;
+  background-color: #16a085;
 }
 
 .cancel-button {
-  background-color: #ffa726;
+  background-color: #e67e22;
   color: #ffffff;
   margin-left: 10px;
 }
 
 .cancel-button:hover {
-  background-color: #fb8c00;
+  background-color: #d35400;
 }
 
-/* Media Queries pour le responsive design */
+/* Media Queries pour une meilleure adaptation */
 @media (max-width: 768px) {
   .container {
-    padding: 15px;
+    padding: 20px;
     width: 95%;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   table th, table td {
-    padding: 10px;
+    padding: 12px;
     font-size: 14px;
   }
 
   button {
     padding: 10px 15px;
-    font-size: 12px;
-    margin: 5px;
+    font-size: 14px;
   }
 
   .confirm-dialog {
@@ -158,12 +168,12 @@ button:hover {
 
 @media (max-width: 480px) {
   h2 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   button {
     padding: 8px 10px;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .confirm-dialog p {
