@@ -32,7 +32,7 @@ const Connections = () => {
             localStorage.setItem("auth", JSON.stringify(authInfo));
 
             if (role === 'etudiant') {
-                // Vérification pour les étudiants
+                // Vérification pour les étudiants dans EtudiantTab
                 const studentQuery = query(collection(db, 'EtudiantTab'), where('email', '==', email));
                 const querySnapshot = await getDocs(studentQuery);
                 if (!querySnapshot.empty) {
@@ -40,10 +40,18 @@ const Connections = () => {
                 } else {
                     alert('Vous n\'êtes pas autorisé à accéder en tant qu\'étudiant.');
                 }
-            } else if (role === 'administrateur') {
-                navigate("/Connections/AdminHome");
             } else if (role === 'gardien') {
-                navigate("/Connections/GardeHome");
+                // Vérification pour les gardiens dans GardienTab
+                const gardienQuery = query(collection(db, 'GardienTab'), where('email', '==', email));
+                const querySnapshot = await getDocs(gardienQuery);
+                if (!querySnapshot.empty) {
+                    navigate("/Connections/GardeHome");
+                } else {
+                    alert('Vous n\'êtes pas autorisé à accéder en tant que gardien.');
+                }
+            } else if (role === 'administrateur') {
+                // Tu peux aussi ajouter une vérification similaire pour les administrateurs si nécessaire
+                navigate("/Connections/AdminHome");
             }
         } catch (error) {
             console.error('Erreur lors de la connexion avec Google :', error);
