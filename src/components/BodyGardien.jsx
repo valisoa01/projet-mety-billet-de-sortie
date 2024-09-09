@@ -10,6 +10,24 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
     const db = getFirestore(); // Initialize Firestore
     const [students, setStudents] = useState([]); // State to hold student data
 
+    // Fonction pour gérer le bouton de sortie
+    const handleExitToggle = (id) => {
+        setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+            student.id === id ? { ...student, isOut: !student.isOut } : student
+        )
+        );
+    };
+    
+    // Fonction pour gérer le bouton de retour
+    const handleEnterToggle = (id) => {
+        setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+            student.id === id ? { ...student, isIn: !student.isIn } : student
+        )
+        );
+    };
+
     const handleLogout = () => {
         signOut(auth).then(() => {
             navigate('/');  // Redirection vers la page d'accueil
@@ -42,41 +60,63 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
     switch (selectedMenu) {
         case 'home':
             content = (
-                <div style={styles.bodyCon}>
-                    <div style={styles.tableCon}>
-                   
-                        <h1 className="title">Listes des étudiants sortis</h1>
-                        <table className="students-table">
-                            <thead>
-                                <tr>
-                                    <th style={styles.titretab}>Nom</th>
-                                    <th style={styles.titretab}>Raison</th>
-                                    <th style={styles.titretab} >Lieu de Sortie</th>
-                                    <th style={styles.titretab} >Date</th>
-                                    <th style={styles.titretab}>Vérification de sortie</th>
-                                    <th style={styles.titretab}>Vérification d'entrer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {students.map((student) => (
-                                    <tr key={student.id}>
-                                        <td>{student.Nom}</td>
-                                        <td>{student.Raison}</td>
-                                        <td>{student.Lieu}</td>
-                                        <td>{student.Date}</td>
-                                        <td>
-                                            <button style={styles.verificationButton}>L'étudiant est sorti</button>
-                                        </td>
-                                        <td>
-                                            <button style={styles.verificationButton}>L'étudiant est rentré</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    
-                    </div>
+              <div style={styles.bodyCon}>
+                <h1 className="title">Listes des étudiants sortis</h1>
+                <div style={styles.tableContainer}>
+                <table style={styles.studentsTable}>
+                    <thead style={styles.thead}>
+                        <tr>
+                            <th style={styles.th}>Nom</th>
+                            <th style={styles.th}>Raison</th>
+                            <th style={styles.th}>Lieu de Sortie</th>
+                            <th style={styles.th}>Date</th>
+                            <th style={styles.th}>Vérification de sortie</th>
+                            <th style={styles.th}>Vérification d'entrée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {students.map((student) => (
+                        <tr key={student.id}>
+                          <td>{student.Nom}</td>
+                          <td>{student.Raison}</td>
+                          <td>{student.Lieu}</td>
+                          <td>{student.Date}</td>
+                          <td>
+                            <button
+                              style={{
+                                backgroundColor: student.isOut ? 'green' : 'lightblue',
+                                color: 'white',
+                                padding: '10px',
+                                border: 'none',
+                                borderRadius: '5px',
+                                cursor: 'pointer'
+                              }}
+                              onClick={() => handleExitToggle(student.id)}
+                            >
+                              {student.isOut ? "Efa nivoaka" : "Mbola tsy nivoaka"}
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              style={{
+                                backgroundColor: student.isIn ? 'green' : 'lightblue',
+                                color: 'white',
+                                padding: '10px',
+                                border: 'none',
+                                borderRadius: '5px',
+                                cursor: 'pointer'
+                              }}
+                              onClick={() => handleEnterToggle(student.id)}
+                            >
+                              {student.isIn ? "Efa niverina" : "Mbola tsy niverina"}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             );
             break;
 
@@ -143,7 +183,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
             break;
 
 
-            case 'user':
+        case 'user':
             content = (
                 <div style={styles.bodyCon}>                    
                     <div style={styles.card}>
@@ -199,29 +239,13 @@ const styles =  {
             padding: '20px',
         },
     },
-    bodyConten:{
-        marginLeft:'290px',
-        marginTop:'100px',
-    },
     formGroup:{
         color: '#333',
         backgroundColor:'#FF9933',
     },
-    tableCon:{
-        marginLeft:'-200px',
-        width:'50%',
-        height:'50%',
-        '@media (max-width: 768px)':{
-            width:'50%',
-            justifyContent:'center',
-            display:'column',
-        },
-        '@media (max-width: 348px)':{
-            width:'50%',
-            display:'column',
-        },
-    },
+    
     bodyContent: {
+        marginTop:'100px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -229,14 +253,7 @@ const styles =  {
         backgroundColor: '#f0f8ff',
         padding: '20px',
         marginLeft:'10px',
-     
         width: '90vh',
-    },
-    tableCont:{
-        marginLeft:'-200px',
-        '@media (max-width: 768px)':{
-            width:'100px',
-        },
     },
 
     container:{
@@ -254,326 +271,338 @@ const styles =  {
         width: '1400px',
     },
   
-        actions: {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '15px',
-            alignItems: 'center',
-            width: '100%',
-        },
-        
-        bodyCon:{
-            marginLeft:'240px',
-            marginTop:'8px',
-            width:'65%',
-            height:'50vh',
-            
-            '@media (max-width: 768px)': {
-                minWidth: '20%',
-            },
-            '@media (max-width: 348px)': {
-                minWidth: '20%',
-
-            },
-        },
-        titre: {
-            fontSize: '24px',
-            fontWeight: 'bold',
-            color: '#333',
-            marginBottom: '20px',
-            borderBottom: '2px solid #4facc4',
-            paddingBottom: '10px',
-            '@media (max-width: 768px)': {
-                fontSize: '20px',
-            },
-        },
-        titretab:{
-            color: '#333',
-            backgroundColor:'#FF9933',
-            '@media (max-width: 768px)': {
-                fontSize: '12px',
-                backgroundColor:'#000000',
-            },
-                '@media (max-width: 348px)': {
-                fontSize: '12px',},
-
-
-        },
-        btn: {
-            backgroundColor: '#FF9933',
-            color: '#FFFFFF',
-            fontWeight: 'bold',
-            fontSize: '16px',
-            borderRadius: '8px',
-            padding: '12px 20px',
-            width: '250px',
-            textDecoration: 'none',
-            textAlign: 'center',
-            cursor: 'pointer',
-            margin: '5px auto',
-            transition: 'background-color 0.3s ease',
+    actions: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '15px',
+        alignItems: 'center',
+        width: '100%',
+    },
     
-            '@media (max-width: 768px)': {
-                fontSize: '14px',
-                padding: '10px 15px',
-                width: '60%',
-            },
-            '@media (max-width: 480px)': {
-                fontSize: '12px',
-                padding: '8px 10px',
-                width: '70%',
-            },
-            ':hover': {
-                backgroundColor: '#FF7800',
-            },
-        },
-       
-        card: {
-            width: '300px',
-            backgroundColor: '#FFFFFF',
-            borderRadius: '10px',
-            padding: '20px',
-            textAlign: 'center',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-            fontFamily: 'Arial, sans-serif',
-            marginLeft:'5px',
-    
-            '@media (max-width: 768px)': {
-                width: '150px',
-                marginBottom: '20px',
-            },
-        },
+    bodyCon:{
+        marginLeft:'10px',
+        marginTop:'8px',
+        width:'65%',
+        height:'50vh',
         
-        profileImageContainer: {
-            width: '200px',
-            height: '200px',
-            borderRadius: '50%',
-            overflow: 'hidden',
-           
-            margin: '0 auto 10px auto',
-            border: '2px solid #3FB9D7',
+        '@media (max-width: 768px)': {
+            minWidth: '20%',
         },
-        profileImg: {
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
+        '@media (max-width: 348px)': {
+            minWidth: '20%',
         },
-        profileName: {
+    },
+    titre: {
+        fontSize: '24px',
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: '20px',
+        borderBottom: '2px solid #4facc4',
+        paddingBottom: '10px',
+        '@media (max-width: 768px)': {
             fontSize: '20px',
-            fontWeight: 'bold',
-            color: '#333333',
-            margin: '10px 0 5px 0',
         },
-        profileTitle: {
+    },
+    tableContainer: {
+        height: '500px', // Hauteur définie pour permettre le défilement
+        overflowY: 'auto', 
+        width: '1000px'// Activer le défilement vertical
+    },
+        studentsTable: {
+        width: '100%',
+        borderCollapse: 'collapse', // Fusionner les bordures des cellules
+    },
+        thead: {
+        position: 'sticky',
+        top: 0, // Fixer l'en-tête en haut du conteneur
+        backgroundColor: '#FF9933', // Couleur de fond pour l'en-tête
+        zIndex: 1, // Assurer que l'en-tête reste au-dessus du reste du contenu
+    },
+        th: {
+        padding: '10px',
+        border: '1px solid #ddd', // Bordure pour les cellules
+        textAlign: 'left',
+    },
+        td: {
+        padding: '10px',
+        border: '1px solid #ddd', // Bordure pour les cellules
+        textAlign: 'left',
+    },
+    btn: {
+        backgroundColor: '#FF9933',
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        borderRadius: '8px',
+        padding: '12px 20px',
+        width: '250px',
+        textDecoration: 'none',
+        textAlign: 'center',
+        cursor: 'pointer',
+        margin: '5px auto',
+        transition: 'background-color 0.3s ease',
+
+        '@media (max-width: 768px)': {
             fontSize: '14px',
-            color: '#777777',
+            padding: '10px 15px',
+            width: '60%',
         },
-        form: {
-            display: 'flex',
+        '@media (max-width: 480px)': {
+            fontSize: '12px',
+            padding: '8px 10px',
+            width: '70%',
+        },
+        ':hover': {
+            backgroundColor: '#FF7800',
+        },
+    },
+    
+    card: {
+        width: '300px',
+        backgroundColor: '#FFFFFF',
+        borderRadius: '10px',
+        padding: '20px',
+        textAlign: 'center',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+        fontFamily: 'Arial, sans-serif',
+        marginLeft:'5px',
+
+        '@media (max-width: 768px)': {
+            width: '150px',
+            marginBottom: '20px',
+        },
+    },
+    
+    profileImageContainer: {
+        width: '200px',
+        height: '200px',
+        borderRadius: '50%',
+        overflow: 'hidden',
+        
+        margin: '0 auto 10px auto',
+        border: '2px solid #3FB9D7',
+    },
+    profileImg: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+    },
+    profileName: {
+        fontSize: '20px',
+        fontWeight: 'bold',
+        color: '#333333',
+        margin: '10px 0 5px 0',
+    },
+    profileTitle: {
+        fontSize: '14px',
+        color: '#777777',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        marginTop: '20px',
+    },
+
+    label: {
+        fontSize: '16px',
+        color: '#333',
+        marginBottom: '5px',
+    },
+    input: {
+        width: '100%',
+        padding: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ccc',
+        fontSize: '14px',
+        '@media (max-width: 768px)': {
+            padding: '8px',
+            fontSize: '12px',
+        },
+    },
+    buttonGroup: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: '20px',
+        '@media (max-width: 768px)': {
             flexDirection: 'column',
-            gap: '20px',
-            marginTop: '20px',
+            gap: '10px',
         },
+    },
 
-        label: {
-            fontSize: '16px',
-            color: '#333',
-            marginBottom: '5px',
+    cancelButton: {
+        backgroundColor: '#ff6666',
+        color: '#fff',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '14px',
+        transition: 'background-color 0.3s ease',
+        '@media (max-width: 768px)': {
+            padding: '8px 16px',
+            fontSize: '12px',
         },
-        input: {
-            width: '100%',
-            padding: '10px',
-            borderRadius: '5px',
-            border: '1px solid #ccc',
-            fontSize: '14px',
-            '@media (max-width: 768px)': {
-                padding: '8px',
-                fontSize: '12px',
-            },
+        '&:hover': {
+            backgroundColor: '#ff4c4c',
         },
-        buttonGroup: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginTop: '20px',
-            '@media (max-width: 768px)': {
-                flexDirection: 'column',
-                gap: '10px',
-            },
+    },
+    saveButton: {
+        backgroundColor: '#4facc4',
+        color: '#fff',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '14px',
+        transition: 'background-color 0.3s ease',
+        '@media (max-width: 768px)': {
+            padding: '8px 16px',
+            fontSize: '12px',
         },
-
-         cancelButton: {
-            backgroundColor: '#ff6666',
-            color: '#fff',
-            padding: '10px 20px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontSize: '14px',
-            transition: 'background-color 0.3s ease',
-            '@media (max-width: 768px)': {
-                padding: '8px 16px',
-                fontSize: '12px',
-            },
-            '&:hover': {
-                backgroundColor: '#ff4c4c',
-            },
+        '&:hover': {
+            backgroundColor: '#3b9bb2',
         },
-        saveButton: {
-            backgroundColor: '#4facc4',
-            color: '#fff',
-            padding: '10px 20px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontSize: '14px',
-            transition: 'background-color 0.3s ease',
-            '@media (max-width: 768px)': {
-                padding: '8px 16px',
-                fontSize: '12px',
-            },
-            '&:hover': {
-                backgroundColor: '#3b9bb2',
-            },
-        },    
-     
+    },    
+    
     notificationContainer: {
-            maxWidth: '600px',
-            margin: '0 auto',
-            padding: '20px',
-            backgroundColor: '#2C2C2C',
-            borderRadius: '10px',
-            color: '#FFFFFF',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        },
-        notificationHeader: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderBottom: '1px solid #555555',
-            paddingBottom: '10px',
-            marginBottom: '10px',
-            width:'1200px'
-        },
-        closeButton: {
-            background: 'none',
-            border: 'none',
-            color: '#FFFFFF',
-            fontSize: '24px',
-            cursor: 'pointer',
-            transition: 'color 0.3s ease',
-        },
-        closeButtonHover: {
-            color: '#FF9933',
-        },
-        notificationMenu: {
-            display: 'flex',
-            gap: '15px',
-            marginBottom: '15px',
-            borderBottom: '1px solid #555555',
-            paddingBottom: '10px',
-        },
+        maxWidth: '600px',
+        margin: '0 auto',
+        padding: '20px',
+        backgroundColor: '#2C2C2C',
+        borderRadius: '10px',
+        color: '#FFFFFF',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    },
+    notificationHeader: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderBottom: '1px solid #555555',
+        paddingBottom: '10px',
+        marginBottom: '10px',
+        width:'1200px'
+    },
+    closeButton: {
+        background: 'none',
+        border: 'none',
+        color: '#FFFFFF',
+        fontSize: '24px',
+        cursor: 'pointer',
+        transition: 'color 0.3s ease',
+    },
+    closeButtonHover: {
+        color: '#FF9933',
+    },
+    notificationMenu: {
+        display: 'flex',
+        gap: '15px',
+        marginBottom: '15px',
+        borderBottom: '1px solid #555555',
+        paddingBottom: '10px',
+    },
 
-        menuItem: {
-            background: 'none',
-            border: 'none',
-            color: '#AAAAAA',
-            fontWeight: 'bold',
-            fontSize: '16px',
-            cursor: 'pointer',
-            paddingBottom: '5px',
-            transition: 'color 0.3s ease, border-bottom 0.3s ease',
-        },
-        active: {
-            color: '#FF9933',
-            borderBottom: '2px solid #FF9933',
-        },
-        notificationList: {
-            maxHeight: '250px',
-            overflowY: 'auto',
-            scrollbarWidth: 'thin',
-        },
-        notificationItem: {
-            padding: '10px 0',
-            borderBottom: '1px solid #555555',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        },
-        notificationTime: {
-            color: '#AAAAAA',
-            fontSize: '14px',
-        },
-       
-        content: {
-            flex: 1,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        },
-        carde: {
-            width: '450px',
-            backgroundColor: '#FFFFFF',
-            borderRadius: '10px',
-            padding: '30px',
-            textAlign: 'center',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    menuItem: {
+        background: 'none',
+        border: 'none',
+        color: '#AAAAAA',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        cursor: 'pointer',
+        paddingBottom: '5px',
+        transition: 'color 0.3s ease, border-bottom 0.3s ease',
+    },
+    active: {
+        color: '#FF9933',
+        borderBottom: '2px solid #FF9933',
+    },
+    notificationList: {
+        maxHeight: '250px',
+        overflowY: 'auto',
+        scrollbarWidth: 'thin',
+    },
+    notificationItem: {
+        padding: '10px 0',
+        borderBottom: '1px solid #555555',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    notificationTime: {
+        color: '#AAAAAA',
+        fontSize: '14px',
+    },
     
-            '@media (max-width: 768px)': {
-                width: '250px',
-                padding: '15px',
-            },
-        },
-        buttons: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginTop: '20px',
-    
-            '@media (max-width: 768px)': {
-                flexDirection: 'column',
-                marginTop: '10px',
-               
-            },
-        },
-        logoutButton: {
-            backgroundColor: '#FF9933',
-            color: 'white',
-            fontWeight: 'bold',
-            padding: '10px 20px',
-            borderRadius: '8px',
-            border: 'none',
-            cursor: 'pointer',
-    
-            '@media (max-width: 768px)': {
-                width: '50%',
-            },
-        },
-        cancelbtn: {
-            backgroundColor: 'white',
-            color: '#FF9933',
-            fontWeight: 'bold',
-            padding: '5px 10px',
-            borderRadius: '8px',
-            border: '2px solid #FF9933',
-            cursor: 'pointer',
-    
-            '@media (max-width: 768px)': {
-                width: '50%',
-            },
-        },
+    content: {
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    carde: {
+        width: '450px',
+        backgroundColor: '#FFFFFF',
+        borderRadius: '10px',
+        padding: '30px',
+        textAlign: 'center',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
 
-        verificationButton: {
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            padding: '10px 20px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s ease',
+        '@media (max-width: 768px)': {
+            width: '250px',
+            padding: '15px',
         },
-        verificationButtonHover: {
-            backgroundColor: '#45a049',
-        },
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: '20px',
 
-    };
+        '@media (max-width: 768px)': {
+            flexDirection: 'column',
+            marginTop: '10px',
+            
+        },
+    },
+    logoutButton: {
+        backgroundColor: '#FF9933',
+        color: 'white',
+        fontWeight: 'bold',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        border: 'none',
+        cursor: 'pointer',
+
+        '@media (max-width: 768px)': {
+            width: '50%',
+        },
+    },
+    cancelbtn: {
+        backgroundColor: 'white',
+        color: '#FF9933',
+        fontWeight: 'bold',
+        padding: '5px 10px',
+        borderRadius: '8px',
+        border: '2px solid #FF9933',
+        cursor: 'pointer',
+
+        '@media (max-width: 768px)': {
+            width: '50%',
+        },
+    },
+
+    verificationButton: {
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+    },
+    verificationButtonHover: {
+        backgroundColor: '#45a049',
+    },
+
+};
 
 export default ListeEtudiantsSortis;
