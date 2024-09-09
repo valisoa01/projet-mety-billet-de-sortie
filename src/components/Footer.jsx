@@ -6,6 +6,7 @@ import MyPN from '../assets/Images/p.png';
 import myFacebook from '../assets/Images/fb.png';
 import myLinkedin from '../assets/Images/linkedin.png';
 import myLogo from '../assets/Images/Logo.png';
+import { NavLink } from "react-router-dom";
 
 
 const Footer = () => {
@@ -32,8 +33,8 @@ const Footer = () => {
       <div className="footer__section">
         <h3>A propos</h3>
         <ul className="footer__links">
-          <li><a href="/privacy-policy">Politique de confidentialité</a></li>
-          <li><a href="/Fonctionnement">Fonctionnalité de l’application</a></li>
+        <li><NavLink to="/privacy-policy">Politique de confidentialité</NavLink></li>
+        <li><NavLink to="/Fonctionnement">Fonctionnement de l'application</NavLink></li>
         </ul>
       </div>
 
