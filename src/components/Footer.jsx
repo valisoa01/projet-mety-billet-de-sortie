@@ -56,9 +56,9 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer__bottom">
+{/* /*       <div className="footer__bottom">
         <p>© copyrightByDevExplorer@PasserellesNumerique.org</p>
-      </div>
+      </div> */} 
     </footer>
   );
 };
