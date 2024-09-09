@@ -57,7 +57,9 @@ const Footer = () => {
       </div>
 
       <div className="footer__bottom">
-        <p>© copyrightByDevExplorer@PasserellesNumerique.org</p>
+      <p className="footer__copyright">
+        &copy; DevExplorer@PasserellesNumeriques.org. Tous droits réservés.
+      </p>
       </div>
     </footer>
   );
