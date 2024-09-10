@@ -185,6 +185,9 @@ const styles = {
         width: '40%',
         marginTop: '45px',
         marginLeft: '-80px',
+        '@media (max-width: 360px)': {
+            margin: '0 10px',
+        },
     },
     titre: {
         fontSize: '18px',
@@ -242,7 +245,7 @@ const styles = {
             height: '10%',
         },
         '@media (max-width: 480px)': {
-            height: '15%',
+            height: '10%',
         },
     },
     //setting

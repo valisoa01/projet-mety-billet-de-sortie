@@ -33,7 +33,7 @@ const ModifierHeureSortie = () => {
   return (
     <>
     <NavLink to="/Connections/AdminHome">
-                <button className="back-btn1">Retour</button>
+                <button className="back-btn5">Retour</button>
      </NavLink>
     <div className="modifier-heure-container">
       <h2 className="title">Modifier l’heure des sorties</h2>
@@ -75,7 +75,7 @@ const ModifierHeureSortie = () => {
       ))}
     </div>
     <NavLink to="/Connections/AdminHome">
-                <button className="back-btn1">Retour</button>
+                <button className="back-btn5">Retour</button>
      </NavLink>
     </>
   );

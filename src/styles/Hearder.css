@@ -121,9 +121,10 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .header {
-    padding: 8px 12px;
+    padding:  12px;
+    flex-direction: column;
   }
 
   .header__menu-item {
@@ -134,5 +135,12 @@
   .header__link,
   .header__button {
     padding: 10px 0;
+  }
+  .header__logo img {
+    height: 90%;
+    width: 20%;
+  }
+  .langue{
+    margin-left: 80px;
   }
 }

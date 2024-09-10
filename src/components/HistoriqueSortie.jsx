@@ -5,7 +5,7 @@ export default function HistoriqueSortie() {
   return (
     <>
     <NavLink to="/Connections/AdminHome">
-        <button className="back-btn">Retour</button>
+        <button className="back-btn5">Retour</button>
      </NavLink>
     <div>
       <h2>Voici la liste des étudiants sorties</h2>

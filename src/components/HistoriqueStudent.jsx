@@ -6,7 +6,7 @@ const HistoriqueDemandes = () => {
     return (
         <>
      <NavLink to="/Connections/StudentHome">
-                <button className="back-btn1">Retour</button>
+                <button className="back-btn5">Retour</button>
      </NavLink>
         <div className="historique-container">
             <h1 className="title">Historiques des demandes</h1>
