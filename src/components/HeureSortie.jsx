@@ -5,7 +5,7 @@ export default function HeureSortie() {
   return (
     <>
     <NavLink to="/Connections/AdminHome">
-        <button className="back-btn">Retour</button>
+        <button className="back-btn5">Retour</button>
      </NavLink>
     <div>
       <h2>Voici les heures de sortie disponible :</h2>

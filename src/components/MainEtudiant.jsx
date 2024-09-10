@@ -69,7 +69,7 @@ const MainEtudiant = ({ selectedMenu }) => {
                                     Envoyer une demande de sortie          
                                 </button>
                             </NavLink>
-                            <NavLink to="/student-home/Historique" className="button-link">
+                            <NavLink to="/student-home/HistoriqueStudent" className="button-link">
                                 <button className="button orange-button">
                                     Voir l’historique des sorties
                                 </button>

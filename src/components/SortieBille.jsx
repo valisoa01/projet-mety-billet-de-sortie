@@ -121,7 +121,7 @@ const SortieBille = () => {
                 </div>
             )}
             <NavLink to="/Connections/StudentHome">
-                <button className="back-btn">Retour</button>
+                <button className="back-btn5">Retour</button>
             </NavLink>
         </div>
     );

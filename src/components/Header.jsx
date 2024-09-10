@@ -44,7 +44,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div style={styles.languageSelector}>
+      <div className="langue" style={styles.languageSelector}>
         <label htmlFor="language">Langue: </label>
         <select id="language" value={language} onChange={handleLanguageChange}>
           <option value="mg">Malagasy</option>
