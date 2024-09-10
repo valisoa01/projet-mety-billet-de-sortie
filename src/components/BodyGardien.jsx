@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";  // Import Firestore methods
+import { getFirestore, collection, getDocs, doc, updateDoc, addDoc, deleteDoc, Timestamp } from 'firebase/firestore';
 import '../styles/Gardien.css';
 
 const ListeEtudiantsSortis = ({ selectedMenu }) => {
@@ -11,21 +11,81 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
     const [students, setStudents] = useState([]); // State to hold student data
 
     // Fonction pour gérer le bouton de sortie
-    const handleExitToggle = (id) => {
-        setStudents((prevStudents) =>
-        prevStudents.map((student) =>
-            student.id === id ? { ...student, isOut: !student.isOut } : student
-        )
-        );
+    const handleExitToggle = async (id) => {
+        try {
+            const student = students.find(student => student.id === id);
+            if (student) {
+                const heureSortie = new Date(); // Obtenir l'heure actuelle
+
+                // Ajouter ou mettre à jour le document dans la collection "SortieConfirmé"
+                await addDoc(collection(db, 'SortieConfirmé'), {
+                    ...student, // Inclure tous les champs existants de SortieNonConfirmé
+                    heureSortie: Timestamp.fromDate(heureSortie),
+                    status: 'confirmé',
+                    userId: id
+                });
+
+                // Supprimer le document de la collection "SortieNonConfirmé"
+                await updateDoc(doc(db, 'SortieNonConfirmé', id), {
+                    isOut: true
+                });
+
+                // Mettre à jour l'état local pour refléter la confirmation de sortie
+                setStudents((prevStudents) =>
+                    prevStudents.map((student) =>
+                        student.id === id ? { ...student, isOut: true } : student
+                    )
+                );
+            }
+        } catch (error) {
+            console.error("Erreur lors de la confirmation de la sortie : ", error);
+        }
     };
-    
+
     // Fonction pour gérer le bouton de retour
-    const handleEnterToggle = (id) => {
-        setStudents((prevStudents) =>
-        prevStudents.map((student) =>
-            student.id === id ? { ...student, isIn: !student.isIn } : student
-        )
-        );
+    const handleEnterToggle = async (id) => {
+        try {
+            const student = students.find(student => student.id === id);
+            if (student) {
+                const heureRetour = new Date(); // Obtenir l'heure actuelle
+
+                // Mettre à jour le document existant dans "SortieConfirmé" avec l'heure de retour
+                const querySnapshot = await getDocs(collection(db, 'SortieConfirmé'));
+                const docToUpdate = querySnapshot.docs.find(doc => doc.data().userId === id);
+                if (docToUpdate) {
+                    await updateDoc(doc(db, 'SortieConfirmé', docToUpdate.id), {
+                        heureRetour: Timestamp.fromDate(heureRetour),
+                        status: 'retour confirmé'
+                    });
+                }
+
+                // Mettre à jour l'état local pour refléter la confirmation de retour
+                setStudents((prevStudents) =>
+                    prevStudents.map((student) =>
+                        student.id === id ? { ...student, isIn: true } : student
+                    )
+                );
+            }
+        } catch (error) {
+            console.error("Erreur lors de la confirmation du retour : ", error);
+        }
+    };
+
+    // Fonction pour gérer la suppression du document
+    const handleDelete = async (id) => {
+        try {
+            // Attendre 2 secondes avant de supprimer le document
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            // Supprimer le document de la collection "SortieNonConfirmé"
+            await deleteDoc(doc(db, 'SortieNonConfirmé', id));
+
+            // Rafraîchir la liste des étudiants
+            const updatedStudents = students.filter(student => student.id !== id);
+            setStudents(updatedStudents);
+        } catch (error) {
+            console.error("Erreur lors de la suppression du document : ", error);
+        }
     };
 
     const handleLogout = () => {
@@ -40,7 +100,7 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
         if (selectedMenu === 'home') {
             const fetchData = async () => {
                 try {
-                    const querySnapshot = await getDocs(collection(db, "SortieNonConfirmé"));
+                    const querySnapshot = await getDocs(collection(db, 'SortieNonConfirmé'));
                     const studentList = querySnapshot.docs.map(doc => ({
                         id: doc.id,
                         ...doc.data()
@@ -55,68 +115,85 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
         }
     }, [selectedMenu]);
 
+
     let content;
 
     switch (selectedMenu) {
         case 'home':
             content = (
-              <div style={styles.bodyCon}>
+                <div style={styles.bodyCon}>
                 <h1 className="title">Listes des étudiants sortis</h1>
                 <div style={styles.tableContainer}>
-                <table style={styles.studentsTable}>
-                    <thead style={styles.thead}>
-                        <tr>
-                            <th style={styles.th}>Nom</th>
-                            <th style={styles.th}>Raison</th>
-                            <th style={styles.th}>Lieu de Sortie</th>
-                            <th style={styles.th}>Date</th>
-                            <th style={styles.th}>Vérification de sortie</th>
-                            <th style={styles.th}>Vérification d'entrée</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {students.map((student) => (
-                        <tr key={student.id}>
-                          <td>{student.Nom}</td>
-                          <td>{student.Raison}</td>
-                          <td>{student.Lieu}</td>
-                          <td>{student.Date}</td>
-                          <td>
-                            <button
-                              style={{
-                                backgroundColor: student.isOut ? 'green' : 'lightblue',
-                                color: 'white',
-                                padding: '10px',
-                                border: 'none',
-                                borderRadius: '5px',
-                                cursor: 'pointer'
-                              }}
-                              onClick={() => handleExitToggle(student.id)}
-                            >
-                              {student.isOut ? "Efa nivoaka" : "Mbola tsy nivoaka"}
-                            </button>
-                          </td>
-                          <td>
-                            <button
-                              style={{
-                                backgroundColor: student.isIn ? 'green' : 'lightblue',
-                                color: 'white',
-                                padding: '10px',
-                                border: 'none',
-                                borderRadius: '5px',
-                                cursor: 'pointer'
-                              }}
-                              onClick={() => handleEnterToggle(student.id)}
-                            >
-                              {student.isIn ? "Efa niverina" : "Mbola tsy niverina"}
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                    <table style={styles.studentsTable}>
+                        <thead style={styles.thead}>
+                            <tr>
+                                <th style={styles.th}>Nom</th>
+                                <th style={styles.th}>Raison</th>
+                                <th style={styles.th}>Lieu de Sortie</th>
+                                <th style={styles.th}>Date</th>
+                                <th style={styles.th}>Vérification de sortie</th>
+                                <th style={styles.th}>Vérification d'entrée</th>
+                                <th style={styles.th}>Suppression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {students.map((student) => (
+                                <tr key={student.id}>
+                                    <td>{student.Nom}</td>
+                                    <td>{student.Raison}</td>
+                                    <td>{student.Lieu}</td>
+                                    <td>{student.Date}</td>
+                                    <td>
+                                        <button
+                                            style={{
+                                                backgroundColor: student.isOut ? 'green' : 'lightblue',
+                                                color: 'white',
+                                                padding: '10px',
+                                                border: 'none',
+                                                borderRadius: '5px',
+                                                cursor: 'pointer'
+                                            }}
+                                            onClick={() => handleExitToggle(student.id)}
+                                        >
+                                            {student.isOut ? "Efa nivoaka" : "Mbola tsy nivoaka"}
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button
+                                            style={{
+                                                backgroundColor: student.isIn ? 'green' : 'lightblue',
+                                                color: 'white',
+                                                padding: '10px',
+                                                border: 'none',
+                                                borderRadius: '5px',
+                                                cursor: 'pointer'
+                                            }}
+                                            onClick={() => handleEnterToggle(student.id)}
+                                        >
+                                            {student.isIn ? "Efa niverina" : "Mbola tsy niverina"}
+                                        </button>
+                                    </td>
+                                    <td>
+                                    <button
+                                        style={{
+                                            backgroundColor: 'red',
+                                            color: 'white',
+                                            padding: '10px',
+                                            border: 'none',
+                                            borderRadius: '5px',
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={() => handleDelete(student.id)}
+                                    >
+                                        Supprimer
+                                    </button>
+                                </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-              </div>
+            </div>
             );
             break;
 
@@ -281,6 +358,7 @@ const styles =  {
     
     bodyCon:{
         marginLeft:'10px',
+        marginRight:'0px',
         marginTop:'8px',
         width:'65%',
         height:'50vh',
@@ -306,10 +384,11 @@ const styles =  {
     tableContainer: {
         height: '500px', // Hauteur définie pour permettre le défilement
         overflowY: 'auto', 
-        width: '1000px'// Activer le défilement vertical
+        width: '1100px'// Activer le défilement vertical
     },
         studentsTable: {
         width: '100%',
+        marginRight:'0px',
         borderCollapse: 'collapse', // Fusionner les bordures des cellules
     },
         thead: {

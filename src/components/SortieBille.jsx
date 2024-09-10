@@ -91,9 +91,10 @@ const SortieBille = () => {
                     <div className="form-group">
                         <label htmlFor="reason">La raison de la sortie :</label>
                         <select id="reason" name="reason" value={reason} onChange={handleReasonChange} required>
-                            <option value="family">Visite de famille</option>
-                            <option value="medical">Rendez-vous médical</option>
-                            <option value="shopping">Courses</option>
+                            <option value="sans raison">Sans Raison</option>
+                            <option value="Visite famille">Visite de famille</option>
+                            <option value="Rendez-vous">Rendez-vous médical</option>
+                            <option value="Courses">Courses</option>
                             <option value="other">Autres</option>
                         </select>
                     </div>
