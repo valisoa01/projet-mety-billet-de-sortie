@@ -58,9 +58,9 @@ function EnvoyerBilletDeSortie() {
           <div className="form-group">
             <label htmlFor="reason">La raison de la sortie :</label>
             <select id="reason" value={reason} onChange={handleReasonChange}>
-              <option value="family">Visite de famille</option>
-              <option value="medical">Rendez-vous médical</option>
-              <option value="shopping">Courses</option>
+              <option value="Visite de famille">Visite de famille</option>
+              <option value="Rendez-vous médical">Rendez-vous médical</option>
+              <option value="Courses">Courses</option>
               <option value="other">Autres</option>
             </select>
           </div>
