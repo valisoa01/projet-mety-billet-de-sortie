@@ -29,9 +29,9 @@ function EnvoyerBilletDeSortie() {
   return (
     <>
       <NavLink to="/Connections/AdminHome">
-        <button className="back-Valisoa">Retour</button>
+        <button className="back-btn5">Retour</button>
       </NavLink>
-      <div className="form-container">
+      <div className="form-container1">
         <h2>Envoyer billet de sortie</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -77,7 +77,7 @@ function EnvoyerBilletDeSortie() {
             </div>
           )}
 
-          <button type="submit">Envoyer</button>
+          <button className='subm1' type="submit">Envoyer</button>
         </form>
       </div>
     </>

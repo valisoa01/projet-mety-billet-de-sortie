@@ -55,15 +55,16 @@ function AjouterEtudiant() {
   return (
     <>
       <NavLink to="/Connections/AdminHome">
-        <button className="back-btn1">Retour</button>
+        <button className="back-btn5">Retour</button>
       </NavLink>
 
-      <div className="form-container">
+     
         {showForm ? (
           <>
+           <div className="form-container">
             <h2>Ajouter un étudiant</h2>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
+              <div className="form-group1">
                 <label>Identifiant :</label>
                 <input
                   type="text"
@@ -72,7 +73,7 @@ function AjouterEtudiant() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group1">
                 <label>Nom d'utilisateur :</label>
                 <input
                   type="text"
@@ -81,7 +82,7 @@ function AjouterEtudiant() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group1">
                 <label>Adresse Email :</label>
                 <input
                   type="email"
@@ -90,7 +91,7 @@ function AjouterEtudiant() {
                   required
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group1">
                 <label>Téléphone :</label>
                 <input
                   type="tel"
@@ -99,15 +100,17 @@ function AjouterEtudiant() {
                   required
                 />
               </div>
-              <button type="submit">Ajouter</button>
+              <button className='subm' type="submit">Ajouter</button>
             </form>
+            </div>
           </>
         ) : (
           <>
-            <button onClick={toggleForm}>Ajouter étudiant</button>
-            <div className="students-table-container">
+           <div className="form-container1">
+            <button onClick={toggleForm} className='butto'>Ajouter étudiant</button>
+            <div className="studen-table-container1">
               <h2>Liste des étudiants</h2>
-              <table className="students-table">
+              <table className="studen-table">
                 <thead>
                   <tr>
                     <th>Identifiant</th>
@@ -128,10 +131,10 @@ function AjouterEtudiant() {
                 </tbody>
               </table>
             </div>
+            </div>
           </>
         )}
-        <button onClick={toggleForm}>{showForm ? 'Afficher les élèves' : 'Ajouter étudiant'}</button>
-      </div>
+        <button className='butt' onClick={toggleForm}>{showForm ? 'Afficher les élèves' : 'Ajouter étudiant'}</button>
     </>
   );
 }
