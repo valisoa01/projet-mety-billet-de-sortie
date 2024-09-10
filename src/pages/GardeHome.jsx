@@ -21,6 +21,7 @@ const styles = {
     }, 
     '@media (max-width: 768px)':{
         app: {
+            top:'20px',
             flexDirection: 'column',
             height: 'auto',
             width: '100vw',
@@ -34,9 +35,31 @@ const styles = {
             width: '100%',
             height: 'auto',
             },
+           
         }
 
     }  
+},
+'@media (max-width: 480px) ':{ 
+    app: {
+        top:'20px',
+        flexDirection: 'column',
+        height: 'auto',
+        width: '100vw',
+        padding: '10px',
+        margin: '0px',
+        gap: '10px',
+        SidebarGardien: {
+        width: '100%',
+        height: 'auto',
+        BodyGardien: {
+        width: '100%',
+        height: 'auto',
+        },
+       
+    }
+
+}                  
 }
   
 

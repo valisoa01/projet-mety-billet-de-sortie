@@ -3,14 +3,13 @@ import '../styles/MainStudent.css';
 import myEtudiant from '../assets/Images/Etudianthome.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
-import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
-
-
+import { getFirestore, collection, onSnapshot, doc, getDoc } from 'firebase/firestore';
 
 const MainEtudiant = ({ selectedMenu }) => {
     const navigate = useNavigate();
     const [notifications, setNotifications] = useState([]);
-
+    const [userProfile, setUserProfile] = useState(null);
+    
     const handleLogout = () => {
         const auth = getAuth();
         signOut(auth)
@@ -24,6 +23,24 @@ const MainEtudiant = ({ selectedMenu }) => {
 
     useEffect(() => {
         const db = getFirestore();
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        // Fetch user profile
+        if (user) {
+            const userRef = doc(db, 'users', user.uid);
+            getDoc(userRef).then((docSnap) => {
+                if (docSnap.exists()) {
+                    setUserProfile(docSnap.data());
+                } else {
+                    console.log("Aucun document trouvé !");
+                }
+            }).catch((error) => {
+                console.error("Erreur lors de la récupération des données utilisateur : ", error);
+            });
+        }
+
+        // Fetch notifications
         const unsubscribe = onSnapshot(collection(db, 'notifications'), (snapshot) => {
             const fetchedNotifications = snapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -133,27 +150,23 @@ const MainEtudiant = ({ selectedMenu }) => {
                 );
                 break;
 
-        
-
-        case 'user':
-            content = (
-                <div style={styles.bodyCon}>
-                    <div style={styles.card}>
-                        <div style={styles.profileImageContainer}>
-                            <img 
-                            src="http://mail.com/" 
-                            alt="PhotoEmails" 
-                            style={styles.profileImage} 
-                            />
+            case 'user':
+                content = (
+                    <div style={styles.bodyCon}>
+                        <div style={styles.card}>
+                            <div style={styles.profileImageContainer}>
+                                <img 
+                                    src={userProfile?.photoURL || "http://mail.com/"} 
+                                    alt="Photo de Profil" 
+                                    style={styles.profileImage} 
+                                />
+                            </div>
+                            <div style={styles.profileName}>{userProfile?.displayName || 'Nom Non Disponible'}</div>
+                            <div style={styles.profileTitle}>Etudiant Passerelles Numériques</div>
                         </div>
-                        <div style={styles.profileName}>Rafanomezantsoa Tolotriniaina</div>
-                        <div style={styles.profileTitle}>Etudiant Passerelles Numériques</div>
                     </div>
-                    
-                
-                </div>
-            );
-            break;
+                );
+                break;
 
         case 'logout':
             content = (
@@ -565,6 +578,43 @@ const styles =  {
             '@media (max-width: 768px)': {
                 width: '50%',
             },
+        },
+
+        card: {
+            width: '100%',
+            maxWidth: '600px',
+            backgroundColor: '#FFFFFF',
+            borderRadius: '10px',
+            padding: '20px',
+            textAlign: 'center',
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+            margin: '10px',
+            '@media (max-width: 768px)': {
+                maxWidth: '100%',
+            },
+        },
+        profileImageContainer: {
+            width: '100px',
+            height: '100px',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            margin: '0 auto 10px',
+            border: '2px solid #3FB9D7',
+        },
+        profileImage: {
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+        },
+        profileName: {
+            fontSize: '20px',
+            fontWeight: 'bold',
+            color: '#333333',
+            margin: '10px 0 5px 0',
+        },
+        profileTitle: {
+            fontSize: '14px',
+            color: '#777777',
         },
        
         

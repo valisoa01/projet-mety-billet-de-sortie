@@ -60,12 +60,6 @@ function SupprimerEtudiant() {
                   <td>{student.nomEleve}</td>
                   <td>
                     <button
-                      className="info-button"
-                      onClick={() => alert(`Nom: ${student.nomEleve}\nEmail: ${student.email}\nTéléphone: ${student.tel}`)}
-                    >
-                      Voir Info
-                    </button>
-                    <button
                       className="delete-button"
                       onClick={() => {
                         setStudentToDelete(student.id);
