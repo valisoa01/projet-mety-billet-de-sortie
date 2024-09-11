@@ -22,7 +22,7 @@
   margin-bottom: 15px;
   font-size: 24px;
   color:#404040;
-  margin-left: -300px;
+  margin-left: -250px;
 }
 
 
@@ -124,5 +124,13 @@
   .footer__icon, .footer__social-icons img {
     height: 16px;
     width: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .footer__section1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color:#404040;
+    margin-left: -20px;
   }
 }
