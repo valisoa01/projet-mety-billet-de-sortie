@@ -210,7 +210,7 @@ const styles = {
             margin: '0 10px',
         },
     },
-    titre1: {
+    titre: {
         fontSize: '20px',
         width:'400px',
         color: '#000000',
