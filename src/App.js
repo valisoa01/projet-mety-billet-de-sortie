@@ -11,6 +11,7 @@ import AjouterGardien from "./components/AjouterGardien";
 import SupprimerGardien from "./components/SupprimerGardien";
 import EnvoyerBilletDeSortie from "./components/EnvoyerBilletDeSortie";
 import HistoriqueSortie from "./components/HistoriqueSortie";
+import HistoriqueStudent from "./components/HistoriqueStudent";
 import ModifierHeureSortie from "./components/ModifierHeureSortie";
 import Apropos from "./pages/A propos";
 import SortieBille from "./components/SortieBille";
@@ -52,6 +53,10 @@ function App() {
           <Route
             path="/Connections/AdminHome/HistoriqueSortie"
             element={<HistoriqueSortie />}
+          />
+          <Route
+            path="/Connections/AdminHome/HistoriqueStudent"
+            element={<HistoriqueStudent />}
           />
           <Route
             path="/Connections/AdminHome/ModifierHeureSortie"

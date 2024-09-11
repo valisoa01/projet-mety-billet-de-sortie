@@ -42,7 +42,7 @@ export default function HistoriqueSortie() {
           <NavLink to="/Connections/AdminHome">
             <button className="back-btn">Retour</button>
           </NavLink>
-        <h2>Voici la liste des étudiants sorties</h2>
+        <h2>Vous êtes sorties pendant ces moment là:</h2>
 
         {/* Afficher un message si l'historique est vide */}
         {historique.length === 0 ? (
