@@ -44,34 +44,8 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="langue" style={styles.languageSelector}>
-        <label htmlFor="language">Langue: </label>
-        <select id="language" value={language} onChange={handleLanguageChange}>
-          <option value="mg">malagasy</option>
-          <option value="fr">français</option>
-          <option value="en">english</option>
-          <option value="en">espagnol</option>
-        </select>
-      </div>
     </header>
   );
-};
-const styles = {
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "10px 20px",
-    backgroundColor: "#282c34",
-    color: "white",
-  },
-  title: {
-    fontSize: "1.5rem",
-  },
-  languageSelector: {
-    display: "flex",
-    alignItems: "center",
-  },
 };
 
 export default Header;
