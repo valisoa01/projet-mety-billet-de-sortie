@@ -52,13 +52,13 @@ const styles = {
     sidebar: {
         width: '80px',
         backgroundColor: '#009DE1',
-        height: '106vh',
+        height: '95vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         paddingTop: '20px',
         borderRadius: '20px',
-        margin: '0', 
+        margin: '5px', 
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         transition: 'all 0.3s ease',
 

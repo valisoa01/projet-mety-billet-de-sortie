@@ -55,7 +55,7 @@ function AjouterEtudiant() {
   return (
     <>
       <NavLink to="/Connections/AdminHome">
-        <button className="back-btn5">Retour</button>
+        <button     className="back-btn5">Retour</button>
       </NavLink>
 
      
@@ -107,7 +107,7 @@ function AjouterEtudiant() {
         ) : (
           <>
            <div className="form-container1">
-            <button onClick={toggleForm} className='butto'>Ajouter étudiant</button>
+            <button onClick={toggleForm} className='button'>Ajouter étudiant</button>
             <div className="studen-table-container1">
               <h2>Liste des étudiants</h2>
               <table className="studen-table">
