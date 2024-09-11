@@ -47,9 +47,9 @@ const Header = () => {
       <div className="langue" style={styles.languageSelector}>
         <label htmlFor="language">Langue: </label>
         <select id="language" value={language} onChange={handleLanguageChange}>
-          <option value="mg">Malagasy</option>
-          <option value="fr">Français</option>
-          <option value="en">English</option>
+          <option value="mg">malagasy</option>
+          <option value="fr">français</option>
+          <option value="en">english</option>
         </select>
       </div>
     </header>
