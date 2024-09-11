@@ -52,7 +52,7 @@ const Footer = () => {
  
           <img src={myLogo}alt="Billet de Sortie Logo" className="footer__logo" width={"90"} height={"90"} />
  
-          <a href='#'><img src={myLogo}alt="Billet de Sortie Logo" className="footer__logo" /></a>
+         
  
         </div>
       </div>
