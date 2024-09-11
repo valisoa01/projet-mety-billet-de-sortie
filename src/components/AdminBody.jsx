@@ -215,6 +215,8 @@ const styles = {
         width: '120%',
         textAlign: 'center',
         margin:'0.5rem 0',
+        textDecoration: 'underline', 
+        textDecorationColor: '#FF9933',
 
         '@media (max-width: 768px)': {
             fontSize: '16px',
