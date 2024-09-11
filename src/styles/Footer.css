@@ -43,7 +43,8 @@
 }
 
 .footer__logo {
-  height: 80px;
+  height: 90px;
+  margin-top: 50px;
 }
 
 .footer__links {
@@ -92,6 +93,7 @@
   margin-top: 20px;
   width: 100%;
   font-size: 14px;
+  margin-top: 20px;
 }
 
 /* Responsive styles */
@@ -118,7 +120,7 @@
   }
 
   .footer__logo {
-    height: 40px;
+    height: 80%;
   }
 
   .footer__icon, .footer__social-icons img {
@@ -132,5 +134,8 @@
     font-size: 24px;
     color:#404040;
     margin-left: -20px;
+  }
+  .footer__logo {
+    height: 80%;
   }
 }
