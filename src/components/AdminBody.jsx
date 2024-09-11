@@ -3,6 +3,7 @@ import PhotoAdmin from '../assets/Images/adminPhoto.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
 import { auth } from '../config/firebase-config';
+import '../styles/AdminBody.css';
 function AdminBody({ selectedMenu }) {
     const navigate = useNavigate(); 
     let content;
@@ -54,25 +55,25 @@ function AdminBody({ selectedMenu }) {
 
             case 'settings':
                 content = (
-                    <div style={styles.bodyCont2}>
-                        <div style={styles.body1}>
-                            <h1 style={styles.titre1}>Etudiant chez Passerelles Numériques Madagascar</h1>
-                            <div style={styles.form}>
-                                <div style={styles.formGroup}>
-                                    <label style={styles.label}>Nom d'utilisateur :</label>
-                                    <input type="text" style={styles.input} />
+                    <div className='bodyCo1'>
+                        <div className='body4'>
+                            <h1 className='titre1'>Etudiant chez Passerelles Numériques Madagascar</h1>
+                            <div className='form1'>
+                                <div className='formGroup1'>
+                                    <label className='label'>Nom d'utilisateur :</label>
+                                    <input type="text" className='input1'/>
                                 </div>
-                                <div style={styles.formGroup}>
-                                    <label style={styles.label}>Téléphone :</label>
-                                    <input type="text" style={styles.input} />
+                                <div className='formGroup1'>
+                                    <label className='label'>Téléphone :</label>
+                                    <input type="text" className='input1' />
                                 </div>
-                                <div style={styles.formGroup}>
-                                    <label style={styles.label}>Email :</label>
-                                    <input type="email" style={styles.input} />
+                                <div className='formGroup1'>
+                                    <label className='label'>Email :</label>
+                                    <input type="email" className='input1' />
                                 </div>
-                                <div style={styles.buttonGroup}>
-                                    <button style={styles.cancelButton}>Annuler</button>
-                                    <button style={styles.saveButton}>Enregistrer</button>
+                                <div className='buttonGroup'>
+                                    <button className='cancelButton'>Annuler</button>
+                                    <button className='saveButton'>Enregistrer</button>
                                 </div>
                             </div>
                         </div>
@@ -117,20 +118,20 @@ function AdminBody({ selectedMenu }) {
             );
             break;
 
-        case 'user':
-            content = (
-                <div style={styles.bodyCont}>
-                    
-                    <div style={styles.card}>
-                        <div style={styles.profileImageContainer}>
-                            <img src=""  alt="Photo" style={styles.profileImg}/>
+            case 'user':
+                content = (
+                    <div className='bodyCont'>
+                        
+                        <div className='card'>
+                            <div className='profileImageContainer'>
+                                <img src=""  alt="Photo" className='profileImg'/>
+                            </div>
+                            <div className='profileName'>Fano</div>
+                            <div className='profileTitle'>Responsable de la vie des étudiants</div>
                         </div>
-                        <div style={styles.profileName}>Fano</div>
-                        <div style={styles.profileTitle}>Responsable de la vie des étudiants</div>
                     </div>
-                </div>
-            );
-            break;
+                );
+                break;
 
         case 'logout':
             content = (
@@ -209,7 +210,7 @@ const styles = {
             margin: '0 10px',
         },
     },
-    titre: {
+    titre1: {
         fontSize: '20px',
         width:'400px',
         color: '#000000',
@@ -274,132 +275,7 @@ const styles = {
             margin: '5px',
         },
     },
-    //setting
-    bodyCont2:{
-        marginLeft: '150px',
-        marginTop: '-60px',
-        width: '100vh',
-        '@media (max-width: 360px)': {
-            marginLeft: '30px',
-            width: '40vh',
-        },
-    },
-    body1:{
 
-        marginTop: '-120px',
-        width: '80vh',
-        '@media (max-width: 360px)': {
-            marginLeft: '30px',
-            width: '20vh',
-        },
-        
-    },
-
-    titre1: {
-        fontSize: '18px',
-        fontWeight: 'bold',
-        color: '#3FB9D7',
-        marginBottom: '13px',
-        marginLeft: '-100px',
-        '@media (max-width: 360px)': {
-            fontSize: '12px',
-            marginLeft: '-200px',
-        },
-        '@media (max-width: 480px)': {
-            fontSize: '14px',
-            marginLeft: '-200px',
-        },
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-        backgroundColor: '#444444',
-        padding: '20px',
-        borderRadius: '8px',
-        width: '320px',
-        marginLeft: '-30px',
-        
-
-        '@media (max-width: 360px)': {
-            width: '100px',
-            padding: '20px',
-        },
-    },
-    formGroup: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '5px',
-
-        '@media (max-width: 360px)': {
-            flexDirection: 'column',
-            alignItems: 'stretch',
-            marginBottom: '10px',
-            
-        },
-    },
-    label: {
-        fontSize: '14px',
-        fontWeight: 'bold',
-        color: '#FFFFFF',
-        '@media(max-width:360px)':{
-            fontSize: '8px',            
-        }
-    },
-    input: {      
-        width: '70%', 
-        padding: '10px',
-        borderRadius: '5px',
-        border: '1px solid #CCCCCC',
-        backgroundColor: '#5C5C5C',
-        color: '#FFFFFF',
-
-        '@media (max-width: 360px)': {
-            width: '20%',
-        },
-        
-    },
-    buttonGroup: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        gap: '15px',
-
-        '@media (max-width: 360px)': {
-            flexDirection: 'column',
-            alignItems: 'stretch',
-        },
-    },
-    cancelButton: {
-        backgroundColor: 'white',
-        color: '#FF9933',
-        fontWeight: 'bold',
-        padding: '10px 20px',
-        borderRadius: '8px',
-        border: '2px solid #FF9933',
-        cursor: 'pointer',
-
-        '@media (max-width: 360px)': {
-            width: '40%',
-        },
-    },
-
-
-
-
-    //user
-
-
-
-
-    //logout
-
-
-
-
-
-
-  
     actions: {
         display: 'flex',
         flexDirection: 'column',
