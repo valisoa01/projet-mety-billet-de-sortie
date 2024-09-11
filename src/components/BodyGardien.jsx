@@ -266,8 +266,6 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
                 break;
         case 'logout':
             content = (
-      
-
                     <div className='content'>
                         <div className='carde'>
                             <img src="" alt="Admin" className='profileImg' />
@@ -277,7 +275,6 @@ const ListeEtudiantsSortis = ({ selectedMenu }) => {
                             </div>
                         </div>
                     </div>
-            
         );
             break;
 
