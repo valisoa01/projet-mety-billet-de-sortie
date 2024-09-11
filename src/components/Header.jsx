@@ -23,7 +23,7 @@ const Header = () => {
             <NavLink
               to="/"
               className="header__link"
-              activeClassName="header__link--active"
+              activeClassName="header__link--active1"
             >
               Accueil
             </NavLink>
@@ -32,7 +32,7 @@ const Header = () => {
             <NavLink
               to="/Apropos"
               className="header__link"
-              activeClassName="header__link--active"
+              activeClassName="header__link--active1"
             >
               A propos
             </NavLink>

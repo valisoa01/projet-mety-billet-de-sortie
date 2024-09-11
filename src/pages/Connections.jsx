@@ -64,8 +64,8 @@ const Connections = () => {
             <Header />
             <section>
                 <h1>Se connecter en tant que</h1>
-                <div className="container">
-                    <div className="option etudiant" onClick={() => expand('etudiant')}>
+                <div className="container1">
+                    <div className="option1 etudiant" onClick={() => expand('etudiant')}>
                         <h3 className="titre">Étudiant</h3>
                         <div className="icon">
                             <img src={MyStudentImage} alt="Étudiant" width="110" height="110" />
@@ -75,7 +75,7 @@ const Connections = () => {
                             Se connecter avec Google
                         </button>
                     </div>
-                    <div className="option administrateur" onClick={() => expand('administrateur')}>
+                    <div className="option1 administrateur" onClick={() => expand('administrateur')}>
                         <h3 className="titre">Administrateur</h3>
                         <div className="icon">
                             <img src={MyAdminImage} alt="Administrateur" width="100" height="100" />
@@ -85,7 +85,7 @@ const Connections = () => {
                             Se connecter avec Google
                         </button>
                     </div>
-                    <div className="option gardien" onClick={() => expand('gardien')}>
+                    <div className="option1 gardien" onClick={() => expand('gardien')}>
                         <h3 className="titre">Gardien</h3>
                         <div className="icon">
                             <img src={MyGardienImage} alt="Gardien" width="100" height="100" />
