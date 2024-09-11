@@ -50,6 +50,7 @@ const Header = () => {
           <option value="mg">malagasy</option>
           <option value="fr">français</option>
           <option value="en">english</option>
+          <option value="en">espagnol</option>
         </select>
       </div>
     </header>
