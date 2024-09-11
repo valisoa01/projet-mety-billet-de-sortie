@@ -58,15 +58,25 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         paddingTop: '20px',
-        borderRadius: '20px',
+        borderRadius: '0 20px 20px 0',
         marginTop: '2px',
         marginBottom: '2px',
         transition: 'all 0.3s ease',
+        '@media (max-width: 360px)': {
+            width: '70%',
+            marginLeft: '-10px',
+            marginBottom: '10px',
+        }
     },
     logo: {
         width: '60px',
         marginBottom: '30px',
         transition: 'width 0.3s ease',
+        '@media (max-width: 360px)': {
+            width: '50%',
+            marginLeft: '-10px',
+            marginBottom: '10px',
+        }
     },
     menuItem: {
         width: '60px',
