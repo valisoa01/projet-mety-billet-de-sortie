@@ -69,6 +69,7 @@ button {
   font-size: 1rem;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+  margin-left: 40vw;
 }
 
 button:hover {
@@ -81,19 +82,9 @@ button:hover {
 .studen-table-container1 {
   margin-top: 20px;
 }
-.butto{
-  margin-left: 250px;
-  width: 180px;
-  background-color: #FF9933;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 10px 20px;
-}
+
 .butt{
-  margin-left: 440px;
+  margin-left: 41vw;
   margin-top: -15px;
   width: 200px;
   background-color: #e87c33;
@@ -201,6 +192,7 @@ button:hover {
   button {
     padding: 10px;
     font-size: 0.9rem;
+    margin-left: 30vw;
   }
   .back-btn5 {
     width: 80px;
@@ -219,11 +211,13 @@ button:hover {
   .subm{
     width: 60px;
     font-size: 0.65rem;
-    margin-left: 130px;
+    margin-left: 37vw;
     margin-top: -2px;
   }
+  .subm:hover{
+    background-color:#FF9933;
+  }
   .butt{
-    margin-left: 90px;
     width: 50%;
     background-color: #FF9933;
     color: #ffffff;
@@ -233,19 +227,9 @@ button:hover {
     font-size: 0.85rem;
     padding:  15px;
     margin-top: -5px;
+    margin-left: 25vw;
   }
-  .butto{
-    margin-left: 110px;
-    margin-top: -5px;
-    width: 100px;
-    background-color: #e87c33;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.65rem;
-    padding: 10px 20px;
-  }
+
   .form-group1 {
     max-height: 40%;
     margin-bottom: 10px;
@@ -299,5 +283,8 @@ button:hover {
   .students-table th, .students-table td {
     padding: 8px;
     font-size: 0.8rem;
+  }
+  .butt {
+    margin-left: 30vw;
   }
 }

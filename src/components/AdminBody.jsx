@@ -1,4 +1,4 @@
-  import React from 'react';
+import React from 'react';
 import PhotoAdmin from '../assets/Images/adminPhoto.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { signOut } from "firebase/auth";
@@ -21,30 +21,29 @@ function AdminBody({ selectedMenu }) {
         case 'home':
             content = (
                 <div style={styles.bodyContent1}>
-                     
                     <div style={styles.body2}>
-                        <h1 style={styles.titre}>Responsable de la vie internat</h1>
-                            <NavLink to="/Connections/AdminHome/AjouterEtudiant">                          
-                                <h2 style={styles.btn}>Ajouter un étudiant</h2>  
-                            </NavLink>
-                            <NavLink to="/Connections/AdminHome/SupprimerEtudiant">
-                                <h2 style={styles.btn}>Supprimer un étudiant</h2>  
-                            </NavLink>
-                            <NavLink to="/Connections/AdminHome/AjouterGardien">
-                                <h2 style={styles.btn}>Ajouter un gardien</h2>  
-                            </NavLink>
-                            <NavLink to="/Connections/AdminHome/SupprimerGardien">
-                                <h2 style={styles.btn}>Supprimer un gardien</h2>  
-                            </NavLink>
-                            <NavLink to="/Connections/AdminHome/EnvoyerBilletSortie">
-                                <h2 style={styles.btn}>Envoyer un billet de sortie</h2>  
-                            </NavLink>
-                            <NavLink to="/Connections/AdminHome/HistoriqueSortie">
-                                <h2 style={styles.btn}>Historique des sorties</h2>   
-                            </NavLink>
-                            <NavLink to="/Connections/AdminHome/ModifierHeureSortie">
-                                <h2 style={styles.btn}>Modifier Heure de sortie</h2> 
-                            </NavLink>                           
+                        <h6 style={styles.titre}>Responsable de la vie internat</h6>
+                        <NavLink to="/Connections/AdminHome/AjouterEtudiant">                          
+                            <h2 style={styles.btn}>Ajouter un étudiant</h2>  
+                        </NavLink>
+                        <NavLink to="/Connections/AdminHome/SupprimerEtudiant">
+                            <h2 style={styles.btn}>Supprimer un étudiant</h2>  
+                        </NavLink>
+                        <NavLink to="/Connections/AdminHome/AjouterGardien">
+                            <h2 style={styles.btn}>Ajouter un gardien</h2>  
+                        </NavLink>
+                        <NavLink to="/Connections/AdminHome/SupprimerGardien">
+                            <h2 style={styles.btn}>Supprimer un gardien</h2>  
+                        </NavLink>
+                        <NavLink to="/Connections/AdminHome/EnvoyerBilletSortie">
+                            <h2 style={styles.btn}>Envoyer un billet de sortie</h2>  
+                        </NavLink>
+                        <NavLink to="/Connections/AdminHome/HistoriqueSortie">
+                            <h2 style={styles.btn}>Historique des sorties</h2>   
+                        </NavLink>
+                        <NavLink to="/Connections/AdminHome/ModifierHeureSortie">
+                            <h2 style={styles.btn}>Modifier Heure de sortie</h2> 
+                        </NavLink>                           
                     </div> 
                     <div>               
                         <img src={PhotoAdmin} alt="Illustration" style={styles.illustration} Width='70%'/>                                    
@@ -159,226 +158,9 @@ function AdminBody({ selectedMenu }) {
     return <div style={styles.body}>{content}</div>;
 }
 const styles = {
-    //home
-    bodyContent1:{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '70vh',
-        margin:'0 100px',
-        width: '100%',
-        '@media (max-width: 360px)': {
-            margin: '0 10px',
-        },
-    },
-    body2: {
-        flex: 1,
-        backgroundColor: '#F0F4F8', // Softer background color for better contrast
-        padding: '40px',
-        borderRadius: '10px',
-        margin: '10px',
-        maxWidth: '80%', // Limit the maximum width for larger screens
-        minHeight: '90vh', // Set to full height
-        display: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '40%',
-        marginTop: '45px',
-        marginLeft: '-80px',
-        '@media (max-width: 360px)': {
-            margin: '0 10px',
-        },
-    },
-    titre: {
-        fontSize: '18px',
-        width:'270px',
-        color: '#3FB9D7',
-        textAlign: 'center',
-        marginBottom: '20px',
-
-        '@media (max-width: 768px)': {
-            fontSize: '12px',
-            width:'60%',
-        },
-        '@media (max-width: 480px)': {
-            fontSize: '12px',
-            width:'40%',
-        },
-    },
-    btn: {
-        backgroundColor: '#FF9933',
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-        fontSize: '14px',
-        borderRadius: '8px',
-        padding: '12px 20px',
-        width: '120%',
-        textAlign: 'center',
-        margin:'0.5rem 0',
-        textDecoration: 'underline', 
-        textDecorationColor: '#FF9933',
-
-        '@media (max-width: 768px)': {
-            fontSize: '16px',
-            padding: '10px',
-            width: '20%',
-        },
-        '@media (max-width: 480px)': {
-            fontSize: '14px',
-            padding: '8px',
-            width: '20%',
-        },
-        '@media (max-width: 360px)': {
-            fontSize: '14px',
-            padding: '8px',
-            width: '15%',
-        },
-
-        ':hover': {
-            backgroundColor: '#FF7800',
-        },
-    },
-
-    illustration: {
-        height: '20%',
-        borderRadius: '10px',
-        marginBottom: '20px',
-        '@media (max-width: 360px)': {
-            height: '10%',
-        },
-        '@media (max-width: 480px)': {
-            height: '10%',
-        },
-    },
-    //setting
-    bodyCont2:{
-        marginLeft: '150px',
-        marginTop: '-60px',
-        width: '110vh',
-        maxWidth:'100vh',
-        '@media (max-width: 360px)': {
-            marginLeft: '30px',
-            width: '40vh',
-        },
-    },
-        body1:{
-
-            marginTop: '-120px',
-            width: '80vh',
-            '@media (max-width: 360px)': {
-                marginLeft: '30px',
-                width: '20vh',
-            },
-            
-        },
-
-        titre1: {
-            fontSize: '18px',
-            fontWeight: 'bold',
-            color: '#3FB9D7',
-            marginBottom: '13px',
-            marginLeft: '-100px',
-            '@media (max-width: 360px)': {
-                fontSize: '12px',
-                marginLeft: '-200px',
-            },
-            '@media (max-width: 480px)': {
-                fontSize: '14px',
-                marginLeft: '-200px',
-            },
-        },
-        form: {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            backgroundColor: '#444444',
-            padding: '20px',
-            borderRadius: '8px',
-            width: '320px',
-            marginLeft: '-30px',
-            
-    
-            '@media (max-width: 360px)': {
-                width: '100px',
-                padding: '20px',
-            },
-        },
-        formGroup: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: '5px',
-    
-            '@media (max-width: 360px)': {
-                flexDirection: 'column',
-                alignItems: 'stretch',
-                marginBottom: '10px',
-               
-            },
-        },
-        label: {
-            fontSize: '14px',
-            fontWeight: 'bold',
-            color: '#FFFFFF',
-            '@media(max-width:360px)':{
-                fontSize: '8px',            
-            }
-        },
-        input: {      
-            width: '70%', 
-            padding: '10px',
-            borderRadius: '5px',
-            border: '1px solid #CCCCCC',
-            backgroundColor: '#5C5C5C',
-            color: '#FFFFFF',
-    
-            '@media (max-width: 360px)': {
-                width: '20%',
-            },
-            
-        },
-        buttonGroup: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '15px',
-    
-            '@media (max-width: 360px)': {
-                flexDirection: 'column',
-                alignItems: 'stretch',
-            },
-        },
-        cancelButton: {
-            backgroundColor: 'white',
-            color: '#FF9933',
-            fontWeight: 'bold',
-            padding: '10px 20px',
-            borderRadius: '8px',
-            border: '2px solid #FF9933',
-            cursor: 'pointer',
-    
-            '@media (max-width: 360px)': {
-                width: '40%',
-            },
-        },
-
-
-
-
-    //user
-
-
-
-
-    //logout
-
-
-
-
-
     body: {
         flex: 1,
         backgroundColor: '#F0F4F8', // Softer background color for better contrast
-        padding: '40px',
         borderRadius: '10px',
         margin: '0 auto',
         maxWidth: '1200px', // Limit the maximum width for larger screens
@@ -402,9 +184,221 @@ const styles = {
         },
     },
   
- 
 
-    
+    //home
+    bodyContent1:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin:'0 0',
+        width: '100%',
+        '@media (max-width: 360px)': {
+            margin: '0 10px',
+        },
+    },
+    body2: {
+        flex: 1,
+        backgroundColor: '#F0F4F8', // Softer background color for better contrast
+        borderRadius: '10px',
+        maxWidth: '40vw', // Limit the maximum width for larger screens
+        minHeight: '80vh', // Set to full height
+        display: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        '@media (max-width: 360px)': {
+            margin: '0 10px',
+        },
+    },
+    titre: {
+        fontSize: '20px',
+        width:'400px',
+        color: '#000000',
+        margin: '30px',
+        alignItems: 'center',
+        textDecoration: 'underline 10px #FF9933',
+
+        '@media (max-width: 768px)': {
+            fontSize: '12px',
+            width:'60%',
+        },
+        '@media (max-width: 480px)': {
+            fontSize: '12px',
+            width:'40%',
+        },
+    },
+    btn: {
+        backgroundColor: '#22bbea',
+        color: '#000000',
+        fontWeight: 'bold',
+        fontSize: '15px',
+        borderRadius: '8px',
+        padding: '10px 20px',
+        width: '30vw',
+        textAlign: 'center',
+        margin:'20px 10px',
+        textDecoration: 'underline', 
+        textDecorationColor: '#22bbea',
+
+        '@media (max-width: 768px)': {
+            fontSize: '16px',
+            padding: '5px',
+            width: '20%',
+        },
+        '@media (max-width: 480px)': {
+            fontSize: '14px',
+            padding: '5px',
+            width: '20%',
+        },
+        '@media (max-width: 360px)': {
+            fontSize: '14px',
+            padding: '5px',
+            width: '15%',
+        },
+
+        ':hover': {
+            backgroundColor: '#FF7800',
+        },
+    },
+
+    illustration: {
+        width: '40vw',
+        height: 'auto',
+        borderRadius: '10px',
+        margin: '10px',
+        '@media (max-width: 360px)': {
+            height: '20vw',
+            margin: '5px',
+        },
+        '@media (max-width: 480px)': {
+            height: '20vw',
+            margin: '5px',
+        },
+    },
+    //setting
+    bodyCont2:{
+        marginLeft: '150px',
+        marginTop: '-60px',
+        width: '100vh',
+        '@media (max-width: 360px)': {
+            marginLeft: '30px',
+            width: '40vh',
+        },
+    },
+    body1:{
+
+        marginTop: '-120px',
+        width: '80vh',
+        '@media (max-width: 360px)': {
+            marginLeft: '30px',
+            width: '20vh',
+        },
+        
+    },
+
+    titre1: {
+        fontSize: '18px',
+        fontWeight: 'bold',
+        color: '#3FB9D7',
+        marginBottom: '13px',
+        marginLeft: '-100px',
+        '@media (max-width: 360px)': {
+            fontSize: '12px',
+            marginLeft: '-200px',
+        },
+        '@media (max-width: 480px)': {
+            fontSize: '14px',
+            marginLeft: '-200px',
+        },
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+        backgroundColor: '#444444',
+        padding: '20px',
+        borderRadius: '8px',
+        width: '320px',
+        marginLeft: '-30px',
+        
+
+        '@media (max-width: 360px)': {
+            width: '100px',
+            padding: '20px',
+        },
+    },
+    formGroup: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: '5px',
+
+        '@media (max-width: 360px)': {
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            marginBottom: '10px',
+            
+        },
+    },
+    label: {
+        fontSize: '14px',
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+        '@media(max-width:360px)':{
+            fontSize: '8px',            
+        }
+    },
+    input: {      
+        width: '70%', 
+        padding: '10px',
+        borderRadius: '5px',
+        border: '1px solid #CCCCCC',
+        backgroundColor: '#5C5C5C',
+        color: '#FFFFFF',
+
+        '@media (max-width: 360px)': {
+            width: '20%',
+        },
+        
+    },
+    buttonGroup: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        gap: '15px',
+
+        '@media (max-width: 360px)': {
+            flexDirection: 'column',
+            alignItems: 'stretch',
+        },
+    },
+    cancelButton: {
+        backgroundColor: 'white',
+        color: '#FF9933',
+        fontWeight: 'bold',
+        padding: '10px 20px',
+        borderRadius: '8px',
+        border: '2px solid #FF9933',
+        cursor: 'pointer',
+
+        '@media (max-width: 360px)': {
+            width: '40%',
+        },
+    },
+
+
+
+
+    //user
+
+
+
+
+    //logout
+
+
+
+
+
+
   
     actions: {
         display: 'flex',

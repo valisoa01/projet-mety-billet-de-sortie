@@ -38,9 +38,6 @@ export default function HistoriqueSortie() {
 
   return (
     <>
-
-     
-
       <div>
           <NavLink to="/Connections/AdminHome">
             <button className="back-btn">Retour</button>
