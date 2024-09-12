@@ -138,12 +138,11 @@ function AdminBody({ selectedMenu }) {
             content = (
                 <div style={styles.bodyCont}>
                     <div style={styles.body2}>
-    
                         <div style={styles.content}>
                             <div style={styles.carde}>
                                 <img src="https://media.licdn.com/dms/image/v2/D5603AQE_qFVozIlsiA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721732163177?e=1731542400&v=beta&t=AyWHpBxfqoLuO7xnjpeq7mzKetu71IC-I1aMIwPW2h4" alt="Admin" style={styles.profileImg} />
                                 <div style={styles.buttons}>
-                                <button onClick={logout} style={styles.logoutButton}>Se déconnecter</button>
+                                    <button onClick={logout} style={styles.logoutButton}>Se déconnecter</button>
                                     <button style={styles.cancelbtn}>Annuler</button>
                                 </div>
                             </div>
@@ -307,16 +306,8 @@ const styles = {
 
         },
 
-        
- 
     },
     
-   
-    
-  
-    //setting
-    
-     
     
     card: {
         width: '300px',
@@ -405,7 +396,7 @@ const styles = {
         alignItems: 'center',
     },
     carde: {
-        width: '450px',
+        width: '50vw',
         backgroundColor: '#FFFFFF',
         borderRadius: '10px',
         padding: '30px',
@@ -431,15 +422,25 @@ const styles = {
         backgroundColor: '#FF9933',
         color: 'white',
         fontWeight: 'bold',
-        padding: '10px 20px',
+        padding: '10px 10px',
         borderRadius: '8px',
         border: 'none',
         cursor: 'pointer',
-
-        '@media (max-width: 768px)': {
-            width: '100%',
-        },
+        margin: '5px',
+        width: '40vw',
     },
+    cancelbtn :{
+        backgroundColor: '#555555',
+        color: 'white',
+        fontWeight: 'bold',
+        padding: '10px 10px',
+        borderRadius: '8px',
+        border: 'none',
+        cursor: 'pointer',
+        margin: '5px',
+        width: '40vw',
+    }
+    
    
 };
 
