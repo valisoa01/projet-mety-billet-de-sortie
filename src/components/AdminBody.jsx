@@ -211,10 +211,10 @@ const styles = {
         },
     },
     titre: {
-        fontSize: '100%',
+        fontSize: '90%',
         width:'400px',
         color: '#000000',
-        margin: '30px',
+        margin: '30px 30px 40px -70px',
         textDecoration: 'underline 10px #FF9933',
         fontWeight: 'bold',
 
@@ -222,7 +222,7 @@ const styles = {
     btn: {
         backgroundColor: '#22bbea',
         color: '#000000',
-        fontSize: '15px',
+        fontSize: '13px',
         borderRadius: '8px',
         padding: '10px 20px',
         width: '30vw',
