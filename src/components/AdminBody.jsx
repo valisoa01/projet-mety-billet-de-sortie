@@ -23,7 +23,7 @@ function AdminBody({ selectedMenu }) {
             content = (
                 <div style={styles.bodyContent1}>
                     <div style={styles.body2}>
-                        <h6 style={styles.titre}>Responsable de la vie internat</h6>
+                        <p style={styles.titre}>Responsable de la vie internat</p>
                         <NavLink to="/Connections/AdminHome/AjouterEtudiant">                          
                             <h2 style={styles.btn}>Ajouter un étudiant</h2>  
                         </NavLink>
@@ -211,26 +211,17 @@ const styles = {
         },
     },
     titre: {
-        fontSize: '20px',
+        fontSize: '100%',
         width:'400px',
         color: '#000000',
         margin: '30px',
-        alignItems: 'center',
         textDecoration: 'underline 10px #FF9933',
+        fontWeight: 'bold',
 
-        '@media (max-width: 768px)': {
-            fontSize: '12px',
-            width:'60%',
-        },
-        '@media (max-width: 480px)': {
-            fontSize: '12px',
-            width:'40%',
-        },
     },
     btn: {
         backgroundColor: '#22bbea',
         color: '#000000',
-        fontWeight: 'bold',
         fontSize: '15px',
         borderRadius: '8px',
         padding: '10px 20px',
