@@ -9,7 +9,8 @@
   background-color: #fff; /* Arrière-plan blanc pour un contraste propre */
   transition: all 0.3s ease-in-out;
 }
-.form-container1{
+
+.form-container1 {
   padding: 20px;
   border-radius: 10px;
   width: 65%;
@@ -17,12 +18,11 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce pour créer de la profondeur */
   background-color: #fff; /* Arrière-plan blanc pour un contraste propre */
   transition: all 0.3s ease-in-out;
-
 }
 
 .form-container1 h2 {
   text-align: center;
-  color: #2E3A59; /* Couleur moderne et agréable pour les titres */
+  color: #2e3a59; /* Couleur moderne et agréable pour les titres */
   margin-bottom: 18px;
   font-size: 18px;
 }
@@ -49,11 +49,11 @@
   border-radius: 8px;
   box-sizing: border-box;
   font-size: 1rem;
-  transition:  0.3s ease;
+  transition: 0.3s ease;
 }
 
 .form-group1 input:focus {
-  border-color:#FF9933; /* Bordure orange lors du focus */
+  border-color: #ff9933; /* Bordure orange lors du focus */
   outline: none;
 }
 
@@ -61,7 +61,7 @@ button {
   display: block;
   width: 100%;
   padding: 12px;
-  background-color:#FF9933;
+  background-color: #ff9933;
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -76,15 +76,15 @@ button:hover {
   background-color: #d46f29; /* Couleur plus foncée au survol */
 }
 
- 
-
 /* Styles pour le tableau des étudiants */
 .studen-table-container1 {
   margin-top: 20px;
+  overflow-x: auto; /* Ajout d'un scroll horizontal */
+  white-space: nowrap; /* Evite que le tableau se réduise trop */
 }
 
-.butt{
-  margin-left: 41vw;
+.butt {
+  margin-left: 28vw;
   margin-top: -15px;
   width: 200px;
   background-color: #e87c33;
@@ -97,25 +97,23 @@ button:hover {
 }
 
 .studen-table {
-  width: 60%;
-  margin-left: 100px;
+  width: 100%; /* Utilisation complète de la largeur */
   border-radius: 20px;
-  
+  overflow-x: auto;
 }
 
-.studen-table th, .studen-table td {
+.studen-table th,
+.studen-table td {
   border: 1px solid #ddd;
   padding: 12px;
   font-size: 12px;
   text-align: center;
-
 }
 
 .studen-table th {
-  background-color: #22BBEA;
+  background-color: #22bbea;
   text-transform: lowercase;
   color: #333;
-  
 }
 
 .studen-table tr:nth-child(even) {
@@ -126,55 +124,64 @@ button:hover {
   background-color: #ddd;
 }
 
-.back-btn5{
+.back-btn5 {
   width: 100px;
   border-radius: 5px;
   background-color: #00bfa6;
-  font-size:small;
+  font-size: small;
   color: black;
-  text-decoration: underline #00bfa6 ;
-  transition: 0.3s ease;
-  cursor: pointer;
-  
-}
-.back-btn5:hover{
-  background-color:#CC6600;
-  color: #333333;
-  text-decoration: underline#CC6600;
-  transition: 0.3s ease;
-  cursor: pointer;
-}
-.subm{
-  width: 100px;
-  border-radius: 5px;
-  background-color: #00bfa6;
-  margin-left: 140px;
-  font-size:small;
-  color: black;
-  text-decoration: underline #00bfa6 ;
+  text-decoration: underline #00bfa6;
   transition: 0.3s ease;
   cursor: pointer;
 }
 
-.subm:hover{
-  background-color:#FF9933;
+.back-btn5:hover {
+  background-color: #cc6600;
   color: #333333;
-  text-decoration: underline#FF9933;
+  text-decoration: underline #cc6600;
+  transition: 0.3s ease;
+}
+
+.subm {
+  width: 100px;
+  border-radius: 5px;
+  background-color: #00bfa6;
+  margin-left: 225px;
+  font-size: small;
+  color: black;
+  text-decoration: underline #00bfa6;
   transition: 0.3s ease;
   cursor: pointer;
+}
+
+.subm:hover {
+  background-color: #ff9933;
+  color: #333333;
+  text-decoration: underline #ff9933;
+  transition: 0.3s ease;
 }
 
 /* Responsive Design: Ajustements pour différentes tailles d'écrans */
+@media (max-width: 768px) {
+  .form-container1 {
+    width: 90%;
+  }
+
+  .studen-table {
+    display: block;
+    width: 100%;
+    overflow-x: scroll; /* Permet de défiler si trop large */
+  }
+}
+
 @media (max-width: 360px) {
   .form-container {
     width: 80%;
     padding: 15px;
-    
   }
   .form-container1 {
     width: 40vh;
     padding: 15px;
-    
   }
   .form-container1 h2 {
     font-size: small;
@@ -196,38 +203,39 @@ button:hover {
   }
   .back-btn5 {
     width: 80px;
-    font-size: 0.70rem;
+    font-size: 0.7rem;
     margin-left: 130px;
     margin-top: -5px;
   }
-  .back-btn5:hover{
-    background-color:#FF9933;
+  .back-btn5:hover {
+    background-color: #ff9933;
   }
 
-  .students-table th, .students-table td {
+  .students-table th,
+  .students-table td {
     padding: 10px;
     font-size: 0.85rem;
   }
-  .subm{
+  .subm {
     width: 60px;
     font-size: 0.65rem;
     margin-left: 37vw;
     margin-top: -2px;
   }
-  .subm:hover{
-    background-color:#FF9933;
+  .subm:hover {
+    background-color: #ff9933;
   }
-  .butt{
+  .butt {
     width: 50%;
-    background-color: #FF9933;
+    background-color: #ff9933;
     color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.85rem;
-    padding:  15px;
+    padding: 15px;
     margin-top: -5px;
-    margin-left: 20vw;
+    margin-left: 5vw;
   }
 
   .form-group1 {
@@ -242,49 +250,21 @@ button:hover {
     border-radius: 20px;
     font-size: 8px;
     margin-left: -18px;
-    
   }
-  .studen-table th, .studen-table td {
+  .studen-table th,
+  .studen-table td {
     padding: 10px;
     font-size: 8px;
     margin: 5px;
     text-align: left;
   }
-  .studen-table-container1{
+  .studen-table-container1 {
     margin-top: 10px;
     margin-bottom: 10px;
     max-height: 50%;
   }
-  .studen-table th{
-    font-size: 11px ;
+  .studen-table th {
+    font-size: 11px;
     padding: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .form-container {
-    width: 40%;
-    padding: 15px;
-  }
-  .form-container h2 {
-    font-size: 1.5rem;
-  }
-
-  .form-group input {
-    padding: 6px;
-    font-size: 0.85rem;
-  }
-
-  button {
-    padding: 8px;
-    font-size: 0.85rem;
-  }
-
-  .students-table th, .students-table td {
-    padding: 8px;
-    font-size: 0.8rem;
-  }
-  .butt {
-    margin-left: 30vw;
   }
 }
