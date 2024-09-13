@@ -107,7 +107,7 @@ div#root {
  .about-section1{
   background-color: #f9fafb;
   text-align: left;
-  width: 550px;
+  width: 40vw;
   padding: 15px;
   border-radius: 5px;
   margin-top: 10px;
@@ -257,7 +257,7 @@ button.google-login-button:hover {
   }
 
   .connect-section,
-  .about-section {
+  .about-section1 {
     min-width: 100%;
   }
 }
