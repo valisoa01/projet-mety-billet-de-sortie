@@ -66,6 +66,10 @@ function App() {
             path="/student-home/MainEtudiant/SortieBille"
             element={<SortieBille />}
           />
+          <Route
+            path="/student-home/MainEtudiant/HistoriqueStudent"
+            element={<HistoriqueSortie />}
+          />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/Fonctionnement" element={<Fonctionnement />} />
         </Routes>

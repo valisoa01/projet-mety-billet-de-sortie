@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import  '../styles/HistoriqueSortie.css';
 
-export default function HistoriqueSortie() {
+export default function HistoriqueStudent() {
   const [historique, setHistorique] = useState([]); // État pour stocker l'historique
   const [detailsVisible, setDetailsVisible] = useState({}); // État pour gérer la visibilité des détails
 
