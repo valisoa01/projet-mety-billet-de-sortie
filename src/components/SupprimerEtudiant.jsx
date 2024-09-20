@@ -6,8 +6,10 @@ import { NavLink } from 'react-router-dom';
 
 function SupprimerEtudiant() {
   const [etudiants, setEtudiants] = useState([]);
+  const [selectedEtudiant, setSelectedEtudiant] = useState(null);
   const [studentToDelete, setStudentToDelete] = useState(null);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   useEffect(() => {
     const fetchEtudiants = async () => {
@@ -31,6 +33,16 @@ function SupprimerEtudiant() {
     }
   };
 
+  const handleShowDetails = (etudiant) => {
+    setSelectedEtudiant(etudiant);
+    setShowDetailsModal(true); // Afficher le modal des détails
+  };
+
+  const handleCloseDetails = () => {
+    setShowDetailsModal(false); // Fermer le modal des détails
+    setSelectedEtudiant(null);
+  };
+
   return (
     <>
       <NavLink to="/Connections/AdminHome">
@@ -41,39 +53,60 @@ function SupprimerEtudiant() {
         {etudiants.length === 0 ? (
           <p>Aucun étudiant trouvé.</p>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>Identifiant</th>
-                <th>Email</th>
-                <th>Téléphone</th>
-                <th>Nom</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {etudiants.map(student => (
-                <tr key={student.id}>
-                  <td>{student.identifiant}</td>
-                  <td>{student.email}</td>
-                  <td>{student.tel}</td>
-                  <td>{student.nomEleve}</td>
-                  <td>
-                    <button
-                      className="delete-button"
-                      onClick={() => {
-                        setStudentToDelete(student.id);
-                        setShowConfirm(true);
-                      }}
-                    >
-                      Supprimer
-                    </button>
-                  </td>
+          <div className="table-container"> {/* Ajout du conteneur scrollable */}
+            <table>
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  
+                  <th>Actions</th>
+                  
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {etudiants.map(student => (
+                  <tr key={student.id}>
+                    <td>{student.nomEleve}</td>
+                    <td>
+                      <button
+                        className="info-button"
+                        onClick={() => handleShowDetails(student)}
+                      >
+                        Afficher Détails
+                      </button>
+                      <button
+                        className="delete-button"
+                        onClick={() => {
+                          setStudentToDelete(student.id);
+                          setShowConfirm(true);
+                        }}
+                      >
+                        Supprimer
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
+  
+        {/* Modal pour afficher les détails de l'étudiant */}
+        {showDetailsModal && selectedEtudiant && (
+          <div className="modal">
+            <div className="modal-content">
+              <h3>Détails de l'étudiant</h3>
+              <p><strong>Identifiant :</strong> {selectedEtudiant.identifiant}</p>
+              <p><strong>Nom :</strong> {selectedEtudiant.nomEleve}</p>
+              <p><strong>Email :</strong> {selectedEtudiant.email}</p>
+              <p><strong>Téléphone :</strong> {selectedEtudiant.tel}</p>
+              {/* Ajoutez d'autres champs si nécessaire */}
+              <button className="close-button" onClick={handleCloseDetails}>Fermer</button>
+            </div>
+          </div>
+        )}
+  
+        {/* Modal de confirmation pour la suppression */}
         {showConfirm && (
           <div className="confirm-dialog">
             <p>Êtes-vous sûr de vouloir supprimer cet étudiant ?</p>
@@ -94,6 +127,7 @@ function SupprimerEtudiant() {
       </div>
     </>
   );
+  
 }
 
 export default SupprimerEtudiant;
